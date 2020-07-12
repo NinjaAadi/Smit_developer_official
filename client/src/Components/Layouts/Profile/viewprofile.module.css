@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
+
+body{
+    margin: 0px;
+    padding:0px;
+    font-family: 'Signika Negative', sans-serif!important;
+    letter-spacing: 0.5px;
+}
+.profile{
+    position: relative;
+    height:600px;
+}
+.profilepic{
+    position: absolute;
+    width: 150px;
+    height:150px;
+    left:5%;
+    top:5%;
+    border-radius:50%;
+    background-size: contain!important;
+    background-position: center;
+    background-repeat: no-repeat!important;
+}
+.name{
+    position: absolute;
+    left:30%;
+    top:10%;
+}
+.name p{
+    display: inline-block;
+    font-size: 35px;
+}
+.name button{
+    display: block;
+    background:#0080ff;
+    padding:5px;
+    border-radius:3px;
+    color:white;
+    border:none
+
+}
+.bio{
+    position: absolute; 
+    top:30%;
+    left:30%;
+    width:60%;
+}
+.p2{
+    color:grey;
+}
+.skills{
+    position: absolute; 
+    top:65%;
+    left:30%;
+}
+.skills ul{
+    list-style-type: none;
+    width:100%;
+
+}
+.skills li{
+    background:orange;
+    color:white;
+    padding:9px;
+    border-radius: 8px;
+    margin-right:8px;
+    margin-top:8px;
+    display: inline-block;
+}
+.role{
+    position: absolute;
+    left:30%;
+    top:50%;
+}
+@media only screen and (max-width:1000px){
+    .skills{
+        top:75%;
+    }
+    .role{
+        top:55%;
+    }
+}
+@media only screen and (max-width:768px){
+    .profilepic{
+        width:120px;
+        height:120px;
+        left:1%;
+        top:5%;
+    }
+    .skills{
+        top:75%;
+    }
+    .role{
+        top:60%;
+    }
+}
+@media only screen and (max-width:577px){
+    .name{
+        left:15%;
+    }
+    .profilepic{
+        width:120px;
+        height:120px;
+        left:65%;
+        top:8%;
+    }
+    .skills{
+        top:75%;
+           left:15%;
+    }
+    .role{
+        top:60%;
+        left:15%;
+        
+    }
+    .bio{
+        left:15%;
+        width:80%;
+    }
+
+}
+@media only screen and (max-width:420px){
+    .name{
+        left:10%;
+    }
+    .profilepic{
+        width:100px;
+        height:100px;
+        left:65%;
+        top:8%;
+    }
+    .skills{
+        top:75%;
+           left:10%;
+    }
+    .role{
+        top:60%;
+        left:10%;
+        
+    }
+    .bio{
+        left:10%;
+        width:80%;
+    }
+
+}
+@media only screen and (max-width:390px){
+    .name{
+        left:5%;
+    }
+    .profilepic{
+        width:100px;
+        height:100px;
+        left:60%;
+        top:8%;
+    }
+    .skills{
+           left:5%;
+    }
+    .role{
+        left:5%;
+        
+    }
+    .bio{
+        left:5%;
+        width:80%;
+    }
+    .p2{
+        font-size: 15px;
+    }
+
+}
+@media only screen and (max-width:330px){
+    .name{
+        left:5%;
+    }
+    .profilepic{
+        width:80px;
+        height:80px;
+        left:65%;
+        top:8%;
+    }
+    .skills{
+           left:5%;
+    }
+    .role{
+        left:5%;
+    }
+    .bio{
+        left:5%;
+        width:80%;
+    }
+    .p2{
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width:308px){
+     .skills{
+        top:78%;
+    }
+    .role{
+        top:64%;        
+    }
+}

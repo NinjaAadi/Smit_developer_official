@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+body{
+    margin: 0px;
+    padding:0px;
+    font-family: 'Signika Negative', sans-serif!important;
+    letter-spacing: 0.5px;
+    scroll-behavior: smooth;
+}
+.comment{
+    display: block;
+    width:60%;
+    padding: 10px;
+}
+.one{
+    text-align:center;margin-top:30px;
+}
+.two{
+    justify-content: center;
+}
+.heading{
+    align-items: center;
+    color:#111d5e;
+    font-weight: bolder;
+    font-size:50px;
+}
+.pic{
+    height:70px;
+    width:70px;
+    background:grey;
+    background-size: contain;
+    border-radius: 50%;
+}
+blue{
+    color:blue;
+}
+yellow{
+    color:gold;
+}
+red{
+    color:red;
+}
+green{
+    color:green;
+}
+code{
+    background:lightgrey;
+}
+.lnc p{
+    display: inline-block;
+    margin-left:5px;
+}
+.lnc1 p{
+    display: inline-block;
+    margin-left:20px;
+    font-size: 20px;
+}
+.post p{
+    font-size:25px;
+    font-family: 'Lato', sans-serif;
+    line-height: 45px;
+}
+.comments{
+    font-family: 'Signika Negative', sans-serif!important;
+
+}
+.name{
+    color:darkgreen;
+    font-size:20px;
+    margin-left:20px;
+}
+.cmnttxt{
+    width:70%;
+    margin-left:20px;
+    background:	#F0F0F0;
+    padding:20px;
+    border-radius: 5px;
+}
+.create{
+    margin-left:20px;
+}
+.create input{
+    width:70%;
+    padding:10px;
+    outline: none;
+    border:2px solid #cccccc;
+    box-shadow: 2px 3px #eeeeee;
+    border-radius: 5px;
+    display: block;
+}
+.create button{
+    border:none;
+    margin-top:10px;
+    background:#0080ff;
+    color:white;
+    padding:10px;
+    border-radius: 4px;
+}
+.edit{
+    position: absolute;
+    right:20px;
+    margin-top:10px;
+    background:black;
+    color:white;
+    padding:8px;
+    border:2px solid black;
+    border-radius: 5px;
+}
+.postlike{
+    border:none;
+    margin-top:10px;
+    background:#0080ff;
+    color:white;
+    padding:10px;
+    border-radius: 4px; 
+}
+.deletebtn{
+    background:white;
+    border:1px solid brown;
+    border-radius: 2px;
+    margin-left:20px;
+    margin-top:10px;
+}
+@media only screen and (max-width:768px){
+    .post p{
+        line-height: 38px;
+    }
+}
+@media only screen and (max-width:500px){
+    .post p{
+        line-height: 34px;
+        font-size:20px;
+    }
+    .cmnttxt{
+        width:90%;
+    }
+    .create input{
+        width:90%;
+    }
+}
+@media only screen and (max-width:370px){
+    .post p{
+        font-size: 17px;
+    }
+}
