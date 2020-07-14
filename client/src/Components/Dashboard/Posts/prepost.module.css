@@ -35,6 +35,12 @@ body{
     color:#4F34C9;
     font-size: 35px;
 }
+.btn2{
+    color: black;
+    background:white;
+    cursor: pointer;
+    border:none;
+}
 .no{
     text-align: center;
     font-size: 30px;

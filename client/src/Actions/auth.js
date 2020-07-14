@@ -1,4 +1,4 @@
-import {SET_TOKEN,SET_PROFILE,SET_PROFILE_TO_NONE, LOGIN_TOKEN,LOGOUT} from '../actiontypes';
+import {SET_TOKEN,SET_PROFILE,SET_PROFILE_TO_NONE, LOGIN_TOKEN,LOGOUT,SET_VIEWPROFILE_ID} from '../actiontypes';
 import axios from 'axios';
 
 
@@ -52,7 +52,7 @@ export const setloginprofile = (token) => async dispatch => {
           const config = {
             headers: {
               "Content-Type": "application/json",
-              "x-auth-token": token
+              "x-auth-token": token||localStorage.getItem('token')
             }
           };
       const profile = await axios.get(
@@ -80,4 +80,22 @@ export const logout  = () => async dispatch => {
   dispatch({
     type:LOGOUT
   })
+}
+export const setusrprofileid = (id) => async dispatch => {
+  try {
+    const config = {
+      headers:{
+        "x-auth-token":localStorage.getItem('token')
+      }
+    }
+    const url = "http://localhost:5000/api/v1/profile/getuserprofile/"+id;
+    const res = await axios.get(url,config);
+  await dispatch({
+    type: SET_VIEWPROFILE_ID,
+    payload: res.data.data
+  });
+  } catch (error) {
+      console.log(error);
+  }
+
 }

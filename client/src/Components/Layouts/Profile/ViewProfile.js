@@ -1,8 +1,9 @@
 import React,{Fragment} from 'react'
 import classes from './viewprofile.module.css';
+import Navbar from "../Navbar/Navbar";
 import { connect } from "react-redux";
 import {Link} from 'react-router-dom';
-import Navbar from '../Navbar/Navbar';
+
 import PropTypes from'prop-types';
 import p from '../../../assets/profilephoto.svg'
 const ViewProfile = (props) =>  {

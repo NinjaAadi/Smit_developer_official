@@ -13,7 +13,8 @@ const {
   deleteProfile,
   getAllprofiles,
   followuser,
-  UnfollowUser
+  UnfollowUser,
+  getuserprofile
 } = require("../Controllers/profiles");
 
 router.route('/profile/createandmodify').post(auth,profileCreation);
@@ -27,4 +28,6 @@ router.route("/profile/allprofiles").get(auth, getAllprofiles);
 router.route('/profile/deleteprofile').delete(auth,deleteProfile)
 
 router.route("/profile/unfollowuser/:id").post(auth, UnfollowUser);
+
+router.route("/profile/getuserprofile/:id").get(auth, getuserprofile);
 module.exports = router

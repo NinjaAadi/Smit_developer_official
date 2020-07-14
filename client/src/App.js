@@ -14,6 +14,8 @@ import Editprofile from './Components/Layouts/Profile/EditProfile'
 import Userposts from './Components/Dashboard/Posts/Userposts';
 import Vieweditpost from './Components/Dashboard/Posts/Vieweditpost';
 import Explore from './Components/Dashboard/Posts/Explore';
+import ViewOtherProfile from './Components/Layouts/Profile/ViewOtherProfile';
+import Footer from './Components/Layouts/Footer';
 import {Provider} from 'react-redux';
 import store from './store'
 /*Importing the router */
@@ -25,11 +27,19 @@ function App() {
         <Fragment>
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/signup" component={Signup}></Route>
-          <Route exact path="/registerpassword" component={Enterpassword}></Route>
+          <Route
+            exact
+            path="/registerpassword"
+            component={Enterpassword}
+          ></Route>
           <Route exact path="/enteremail" component={Email}></Route>
           <Route exact path="/entertoken" component={Token}></Route>
           <Route exact path="/dashboard" component={Dashboard}></Route>
-          <Route exact path="/initialprofile" component={InitialProfile}></Route>
+          <Route
+            exact
+            path="/initialprofile"
+            component={InitialProfile}
+          ></Route>
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/post" component={Post}></Route>
           <Route exact path="/userprofile" component={Viewprofile} />
@@ -37,7 +47,9 @@ function App() {
           <Route exact path="/createpost" component={Createpost} />
           <Route exact path="/currentuserposts" component={Userposts} />
           <Route exact path="/editpost" component={Vieweditpost} />
-          <Route exact path="/explore" component={Explore}/>
+          <Route exact path="/explore" component={Explore} />
+          <Route exact path="/viewuserprofile" component={ViewOtherProfile} />
+          <Footer/>
         </Fragment>
       </BrowserRouter>
     </Provider>

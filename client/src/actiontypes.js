@@ -18,3 +18,4 @@ export const GET_USER_POSTS = "GET_USER_POSTS";
 export const SET_EDIT_POST = "SET_EDIT_POST";
 export const SET_EDIT_POST_DATA = "SET_EDIT_POST_DATA";
 export const SET_ALL_POST = "SET_ALL_POST";
+export const SET_VIEWPROFILE_ID = "SET_VIEWPROFILE_ID";

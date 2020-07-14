@@ -5,6 +5,7 @@ import axios from 'axios';
 import {useHistory,Link} from 'react-router-dom';
 import Spinner from '../../Layouts/Spinner';
 import {setsinglepost,setpost} from '../../../Actions/post'
+import {setusrprofileid} from '../../../Actions/auth';
 import PropTypes from 'prop-types';
 const Prepost = (props) => {
 const history = useHistory();
@@ -13,6 +14,11 @@ useEffect(()=> {
         props.setpost();
 },[])
 
+const ViewOtherProfile = async (e,id) => {
+
+  await props.setusrprofileid(id);
+  history.push("/viewuserprofile");
+}
 const read = async (e,post) => {
 e.preventDefault();
  await props.setsinglepost(post._id);
@@ -44,11 +50,11 @@ e.preventDefault();
                     </div>
                     <div className={classes["details"]}>
                       <div className={classes["name"]}>
-                        <p>
+                        <button className={classes['btn2']}onClick = {e => ViewOtherProfile(e,post.user)}>
                           {" "}
                           <i className="fas fa-pen"></i>
                           {post.name}
-                        </p>
+                        </button>
                       </div>
                       <div className={classes["created"]}>
                         <p>{post.createdAt.toString()}</p>
@@ -114,10 +120,11 @@ e.preventDefault();
 
 }
 Prepost.propTypes = {
-    token:PropTypes.string.isRequired,
-    setsinglepost:PropTypes.func.isRequired,
-    setpost:PropTypes.func.isRequired,
-}
+  token: PropTypes.string.isRequired,
+  setsinglepost: PropTypes.func.isRequired,
+  setpost: PropTypes.func.isRequired,
+  setusrprofileid:PropTypes.func.isRequired,
+};
 const mapStateToProps = state => (
     {
         token:state.auth.token,
@@ -126,4 +133,8 @@ const mapStateToProps = state => (
 )
 
 
-export default connect(mapStateToProps,{setsinglepost,setpost})(Prepost);
+export default connect(mapStateToProps, {
+  setsinglepost,
+  setpost,
+  setusrprofileid
+})(Prepost);

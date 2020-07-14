@@ -319,3 +319,28 @@ exports.deleteProfile = async (req,res,next) => {
     next();
   }
 }
+
+/*
+@desc : Get a profile by userid
+@route :/profiles/getuserprofile:/id
+@access : PRIVATE
+*/
+exports.getuserprofile = async(req,res,next) => {
+  try {
+      const id = req.params.id;
+      const profile  = await Profile.findOne({user:id});
+      if(!profile){
+        return res.status(404).json({
+          success:false,
+          data:"There is no profile with this id"
+        })
+      }
+      res.status(200).json({
+        success:true,
+        data:profile
+      })
+  } catch (error) {
+    console.log(error);
+    next();
+  }
+}

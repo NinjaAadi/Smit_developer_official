@@ -1,9 +1,10 @@
-import {SET_TOKEN,SET_PROFILE,SET_PROFILE_TO_NONE,LOGIN_TOKEN,LOGOUT} from '../actiontypes';
+import {SET_TOKEN,SET_PROFILE,SET_PROFILE_TO_NONE,LOGIN_TOKEN,LOGOUT,SET_VIEWPROFILE_ID} from '../actiontypes';
 const initialstate = {
     token:localStorage.getItem('token'),
     isAuthenticated:localStorage.getItem('isAuthenticated'),
     user:localStorage.getItem('user'),
-    profile:localStorage.getItem('profile')
+    profile:localStorage.getItem('profile'),
+    viewprofile:""
 }
 
 export default function(state=initialstate,action){
@@ -49,6 +50,13 @@ export default function(state=initialstate,action){
                 profile:{},
                 token:null     
             }
+        case SET_VIEWPROFILE_ID:{
+            localStorage.setItem("viewuserprofile",JSON.stringify(payload))
+            return {
+              ...state,
+              viewprofile: localStorage.getItem("viewuserprofile")
+            };
+        }
         default: 
             return state;
     }

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useHistory, Link } from "react-router-dom";
 import Spinner from "../../Layouts/Spinner";
 import { setsinglepost, setallpost } from "../../../Actions/post";
+import { setusrprofileid } from "../../../Actions/auth";
 import Navbar from '../../Layouts/Navbar/Navbar';
 import PropTypes from "prop-types";
 const Explore = props => {
@@ -17,6 +18,10 @@ const Explore = props => {
       func();
   }, []);
 
+  const ViewOtherProfile = async (e, id) => {
+    await props.setusrprofileid(id);
+    history.push("/viewuserprofile");
+  };
   const read = async (e, post) => {
     e.preventDefault();
     await props.setsinglepost(post._id);
@@ -48,11 +53,13 @@ const Explore = props => {
                 </div>
                 <div className={classes["details"]}>
                   <div className={classes["name"]}>
-                    <p>
-                      {" "}
+                    <button
+                      className={classes["btn2"]}
+                      onClick={e => ViewOtherProfile(e, post.user)}
+                    >
                       <i className="fas fa-pen"></i>
                       {post.name}
-                    </p>
+                    </button>
                   </div>
                   <div className={classes["created"]}>
                     <p>{post.createdAt.toString()}</p>
@@ -118,11 +125,16 @@ const Explore = props => {
 Explore.propTypes = {
   token: PropTypes.string.isRequired,
   setsinglepost: PropTypes.func.isRequired,
-  setallpost: PropTypes.func.isRequired
+  setallpost: PropTypes.func.isRequired,
+  setusrprofileid:PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({
   token: state.auth.token,
   post: state.post.allposts
 });
 
-export default connect(mapStateToProps, { setsinglepost, setallpost })(Explore);
+export default connect(mapStateToProps, {
+  setsinglepost,
+  setallpost,
+  setusrprofileid
+})(Explore);
