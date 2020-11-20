@@ -11,6 +11,7 @@ const fileupload = require('express-fileupload');
 const express = require('express');
 const http = require('http');
 const colors = require('colors')
+const path = require('path');
 
 /*Bring the database file */
 const connectDb = require('./utils/database');
@@ -74,11 +75,18 @@ app.use("/api/v1/", profile);
 app.use("/api/v1/",posts);
 
 
+
 const PORT = process.env.PORT || 5000;
 
 
-
-
+//Serve static asset in production
+if(process.env.NODE_ENV === 'production'){
+    //Set static folder
+    app.use(express.static('client/build'));
+    app.get('*',(req,res) => {
+        res.sendFile(path.resolve(__dirname,'client','build','indexedDB.html'));
+    });
+}
 
 
 
