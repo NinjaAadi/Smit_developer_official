@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "nodemon server.js",
     "nodemon": "nodemon server",
-    "start" : "node server.js" ,
+    "start": "node server.js",
     "client": "npm start --prefix client",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "both": "concurrently \"npm run nodemon\" \" npm run client\""
   },
   "homepage": "https://github.com/NinjaAadi/Smit_developers#readme",
@@ -32,10 +32,9 @@
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "xss-clean": "^0.1.1"
-  },
-  "devDependencies": {
+    "xss-clean": "^0.1.1",
     "nodemon": "^2.0.4"
   },
+  "devDependencies": {},
   "proxy": "http://localhost:5000"
 }

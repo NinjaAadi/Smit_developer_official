@@ -75,7 +75,7 @@ app.use("/api/v1/",posts);
 
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 
 //Serve static asset in production
