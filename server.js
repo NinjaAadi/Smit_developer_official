@@ -11,7 +11,6 @@ const fileupload = require('express-fileupload');
 const express = require('express');
 const http = require('http');
 const colors = require('colors')
-const path = require('path');
 
 /*Bring the database file */
 const connectDb = require('./utils/database');
