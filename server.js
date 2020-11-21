@@ -85,5 +85,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server running at post ${PORT}`.cyan.inverse);
+  console.log(`Server running at post ${process.env.PORT}`.cyan.inverse);
 });
