@@ -51,9 +51,10 @@ const Login = props => {
         formdata.append("password", password);
         const res = await axios.post(
           "http://localhost:5000/api/v1/users/login",
+
           formdata,
           config
-        );
+        );  
         await props.setloginprofile(res.data.token);
         await props.setlogintoken(res.data.token);
 
