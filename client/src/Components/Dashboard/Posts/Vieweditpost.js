@@ -35,7 +35,7 @@ const  Vieweditpost = (props) =>  {
         const formdata = new FormData();
         formdata.append("heading", heading);
         formdata.append("posttext", props.postdata);
-            const url = "http://localhost:5000/api/v1/posts/editpost/"+props.post._id;
+            const url = "/api/v1/posts/editpost/"+props.post._id;
         const res = await axios.put(
           url,
           formdata,

@@ -46,7 +46,7 @@ if (
 ) {
   image = p;
 } else {
-  image = "http://localhost:5000/images/" + profile.profileimagetext;
+  image = "/images/" + profile.profileimagetext;
 }
 let skill = [];
 if (profile != null) {
@@ -70,7 +70,7 @@ const Unfollow = async (e) => {
     };
     const data = {};
     const url =
-      "http://localhost:5000/api/v1/profile/unfollowuser/" + profile.user;
+      "/api/v1/profile/unfollowuser/" + profile.user;
     const res = await axios.post(url,data,config);
     console.log(res);
     await props.setloginprofile();
@@ -95,7 +95,7 @@ const follow = async e => {
        };
        const data = {};
        const url =
-         "http://localhost:5000/api/v1/profile/followuser/" + profile.user;
+         "/api/v1/profile/followuser/" + profile.user;
        const res = await axios.post(url, data, config);
        console.log(res);
         await props.setloginprofile();

@@ -61,7 +61,7 @@ const  InitialProfile = (props) =>  {
            formData.append("skills", details.skills);
             console.log(formData);
             const res = await axios.post(
-              "http://localhost:5000/api/v1/profile/createandmodify",
+              "/api/v1/profile/createandmodify",
               formData,
               config
             );

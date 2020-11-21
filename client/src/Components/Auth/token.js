@@ -43,7 +43,7 @@ const Token = (props) => {
             token: token
           };
           const res = await axios.post(
-            "http://localhost:5000/api/v1/users/emailverification",
+            "/api/v1/users/emailverification",
             data,
             config
           );

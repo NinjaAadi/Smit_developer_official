@@ -12,7 +12,7 @@ export const setusertoken = (token) => async dispatch => {
       }
     };
     const res = await axios.get(
-      "http://localhost:5000/api/v1/users/getcurrentuser",
+      "/api/v1/users/getcurrentuser",
       config
     );
     console.log(res);
@@ -36,7 +36,7 @@ export const setlogintoken = (token) => async dispatch => {
               }
             };
     const res = await axios.get(
-      "http://localhost:5000/api/v1/users/getcurrentuser",
+      "/api/v1/users/getcurrentuser",
       config
     );    
     await dispatch({
@@ -56,7 +56,7 @@ export const setloginprofile = (token) => async dispatch => {
             }
           };
       const profile = await axios.get(
-        "http://localhost:5000/api/v1/profile/getcurrentprofile",
+        "/api/v1/profile/getcurrentprofile",
         config
       );
           dispatch({
@@ -88,7 +88,7 @@ export const setusrprofileid = (id) => async dispatch => {
         "x-auth-token":localStorage.getItem('token')
       }
     }
-    const url = "http://localhost:5000/api/v1/profile/getuserprofile/"+id;
+    const url = "/api/v1/profile/getuserprofile/"+id;
     const res = await axios.get(url,config);
   await dispatch({
     type: SET_VIEWPROFILE_ID,

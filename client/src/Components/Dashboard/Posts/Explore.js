@@ -44,7 +44,7 @@ const Explore = props => {
         </div>
         {props.post.map(post => {
           const txt = post.posttext.substring(0, 15);
-          const photo = "http://localhost:5000/images/" + post.createrpic;
+          const photo = "/images/" + post.createrpic;
           return (
             <Fragment>
               <div className={"container " + classes["post"]}>

@@ -19,7 +19,7 @@ const Navbar =  (props) => {
     useEffect(() => {
         if(navprofile!=null&&navprofile.profileimagetext!=null){
           setphoto(
-            "http://localhost:5000/images/" + navprofile.profileimagetext
+            "/images/" + navprofile.profileimagetext
           )
         }
         else{

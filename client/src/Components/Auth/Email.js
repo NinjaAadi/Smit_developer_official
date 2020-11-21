@@ -51,7 +51,7 @@ const Enteremail = (props) => {
             "password":props.details.password
           }
       const res = await axios.post(
-        "http://localhost:5000/api/v1/users/register",
+        "/api/v1/users/register",
         data,
         config
       );

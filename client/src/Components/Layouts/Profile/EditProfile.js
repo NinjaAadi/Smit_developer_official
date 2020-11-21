@@ -76,7 +76,7 @@ const Editprofile = props => {
       formData.append("bio", details.bio);
       console.log(formData);
       const res = await axios.post(
-        "http://localhost:5000/api/v1/profile/createandmodify",
+        "/api/v1/profile/createandmodify",
         formData,
         config
       );

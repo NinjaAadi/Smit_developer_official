@@ -29,7 +29,7 @@ const Post = (props) =>  {
                 id:cmntid
             }
             await axios.post(
-              "http://localhost:5000/api/v1/posts/deletecomment/"+postid,
+              "/api/v1/posts/deletecomment/"+postid,
               data,
               config
             );
@@ -57,7 +57,7 @@ const Post = (props) =>  {
             };
         try {
             await axios.post(
-              "http://localhost:5000/api/v1/posts/comment",
+              "/api/v1/posts/comment",
               data,
               config
             );
@@ -85,7 +85,7 @@ const Post = (props) =>  {
     const data={};
         try {
                 await axios.post(
-                "http://localhost:5000/api/v1/posts/likepost/" + id,
+                "/api/v1/posts/likepost/" + id,
                 data,
                 config
               );
@@ -109,7 +109,7 @@ const Post = (props) =>  {
     const data={};
         try {
                 await axios.post(
-                "http://localhost:5000/api/v1/posts/dislikepost/" + id,
+                "/api/v1/posts/dislikepost/" + id,
                 data,
                 config
               );
@@ -133,7 +133,7 @@ const Post = (props) =>  {
 if(!isEmpty(props.post)){
     const post =  props.post;
     const htmltxt = window.atob(post.posttext);
-    const image = "http://localhost:5000/images/"+post.createrpic;
+    const image = "/images/"+post.createrpic;
 
 if (typeof props.user === "string") {
    const usr = JSON.parse(props.user);

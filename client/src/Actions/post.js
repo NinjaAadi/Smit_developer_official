@@ -10,7 +10,7 @@ export const setpost = () => async  dispatch => {
       }
     };
       const res = await axios.get(
-        "http://localhost:5000/api/v1/posts/getfollowpost",
+        "/api/v1/posts/getfollowpost",
         config
       );
     dispatch({
@@ -25,7 +25,7 @@ export const setallpost = () => async dispatch => {
     }
   };
   const res = await axios.get(
-    "http://localhost:5000/api/v1/posts/getallposts",
+    "/api/v1/posts/getallposts",
     config
   );
   dispatch({
@@ -50,7 +50,7 @@ export const getsinglepost  = (id) => async  dispatch => {
          id:id
        }
        const res = await axios.post(
-         "http://localhost:5000/api/v1/posts/getsinglepost",
+         "/api/v1/posts/getsinglepost",
           data,
           config
        );
@@ -75,7 +75,7 @@ export const getuserposts = () => async dispatch => {
         "x-auth-token":localStorage.getItem('token')
         }
       }
-      const res = await axios.get("http://localhost:5000/api/v1/posts/getyourposts",config);
+      const res = await axios.get("/api/v1/posts/getyourposts",config);
       console.log(res);
      await dispatch({
         type:GET_USER_POSTS,
@@ -95,7 +95,7 @@ export const seteditpost = (id) => async dispatch => {
     const formdata = new FormData();
     formdata.append('id',id);
     const res = await axios.post(
-      "http://localhost:5000/api/v1/posts/getsinglepost",formdata,config
+      "/api/v1/posts/getsinglepost",formdata,config
     );
     dispatch({
       type:SET_EDIT_POST,

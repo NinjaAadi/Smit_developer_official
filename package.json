@@ -35,6 +35,5 @@
     "xss-clean": "^0.1.1",
     "nodemon": "^2.0.4"
   },
-  "devDependencies": {},
-  "proxy": "http://localhost:5000"
+  "devDependencies": {}
 }

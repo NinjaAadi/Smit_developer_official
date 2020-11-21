@@ -50,7 +50,7 @@ const Login = props => {
         formdata.append("email", email);
         formdata.append("password", password);
         const res = await axios.post(
-          "http://localhost:5000/api/v1/users/login",
+          "/api/v1/users/login",
 
           formdata,
           config

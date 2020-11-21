@@ -44,7 +44,7 @@ const Createpost = (props) => {
             formdata.append("heading",heading);
             formdata.append("posttext",props.postbody)
             const res = await axios.post(
-              "http://localhost:5000/api/v1/posts/createpost",
+              "/api/v1/posts/createpost",
               formdata,
               config
             );
