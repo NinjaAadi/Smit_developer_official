@@ -22,6 +22,17 @@ const Prepost = (props) => {
     await props.setsinglepost(post._id);
     history.push("/post");
   };
+
+  //Function to remove HTML TAGS from a string
+  function removeTags(str) {
+    if (str === null || str === "") return false;
+    else str = str.toString();
+
+    // Regular expression to identify HTML tags in
+    // the input string. Replacing the identified
+    // HTML tag with a null string.
+    return str.replace(/(<([^>]+)>)/gi, "");
+  }
   //If props is not empty then render this
   if (props.post.length > 0) {
     return (
@@ -38,9 +49,8 @@ const Prepost = (props) => {
           </Link>
         </div>
         {props.post.map((post) => {
-          const html = window.atob(post.posttext);
-          const htmlobj = ReactHtmlParser(html);
-          const txt = htmlobj[0].props.children[0];
+          const html = window.atob(post.posttext).toString().substring(0,25);
+          const txt = removeTags(html);
           const photo = "/images/" + post.createrpic;
           console.log(`url(${photo})`);
           return (
