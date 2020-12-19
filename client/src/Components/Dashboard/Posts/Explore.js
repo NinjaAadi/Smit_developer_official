@@ -6,16 +6,18 @@ import { useHistory, Link } from "react-router-dom";
 import Spinner from "../../Layouts/Spinner";
 import { setsinglepost, setallpost } from "../../../Actions/post";
 import { setusrprofileid } from "../../../Actions/auth";
-import Navbar from '../../Layouts/Navbar/Navbar';
+import Navbar from "../../Layouts/Navbar/Navbar";
 import PropTypes from "prop-types";
-const Explore = props => {
+import ReactHtmlParser from "react-html-parser";
+
+const Explore = (props) => {
   const history = useHistory();
 
   useEffect(() => {
-      const func = async () => {
-        await props.setallpost();
-      }
-      func();
+    const func = async () => {
+      await props.setallpost();
+    };
+    func();
   }, []);
 
   const ViewOtherProfile = async (e, id) => {
@@ -30,7 +32,7 @@ const Explore = props => {
   if (props.post.length > 0) {
     return (
       <Fragment>
-          <Navbar/>
+        <Navbar />
         <div className="container" style={{ marginTop: "60px" }}>
           <Link to="/createpost">
             <button className={classes["btn"]}>
@@ -42,8 +44,10 @@ const Explore = props => {
             </button>
           </Link>
         </div>
-        {props.post.map(post => {
-          const txt = post.posttext.substring(0, 15);
+        {props.post.map((post) => {
+          const html = window.atob(post.posttext);
+          const htmlobj = ReactHtmlParser(html);
+          const txt = htmlobj[0].props.children[0];
           const photo = "/images/" + post.createrpic;
           return (
             <Fragment>
@@ -55,7 +59,7 @@ const Explore = props => {
                   <div className={classes["name"]}>
                     <button
                       className={classes["btn2"]}
-                      onClick={e => ViewOtherProfile(e, post.user)}
+                      onClick={(e) => ViewOtherProfile(e, post.user)}
                     >
                       <i className="fas fa-pen"></i>
                       {post.name}
@@ -75,7 +79,7 @@ const Explore = props => {
                   </div>
                   <button
                     className={classes["full"]}
-                    onClick={e => read(e, post)}
+                    onClick={(e) => read(e, post)}
                   >
                     Read full post
                   </button>
@@ -126,15 +130,15 @@ Explore.propTypes = {
   token: PropTypes.string.isRequired,
   setsinglepost: PropTypes.func.isRequired,
   setallpost: PropTypes.func.isRequired,
-  setusrprofileid:PropTypes.func.isRequired,
+  setusrprofileid: PropTypes.func.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   token: state.auth.token,
-  post: state.post.allposts
+  post: state.post.allposts,
 });
 
 export default connect(mapStateToProps, {
   setsinglepost,
   setallpost,
-  setusrprofileid
+  setusrprofileid,
 })(Explore);

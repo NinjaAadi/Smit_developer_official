@@ -19,6 +19,7 @@ import Footer from './Components/Layouts/Footer';
 import {Provider} from 'react-redux';
 import store from './store'
 /*Importing the router */
+
 import{BrowserRouter,Switch,Route} from 'react-router-dom'
 function App() {
   return (
