@@ -7,7 +7,7 @@ import Token from "./Components/Auth/token";
 import Dashboard from './Components/Dashboard/Dashboard';
 import InitialProfile from './Components/Layouts/Profile/Profile';
 import Login from './Components/Auth/Login';
-import Post from './Components/Dashboard/Posts/Post';
+import Post from './Components/Dashboard/Posts/Viewpost/Post';
 import Viewprofile from './Components/Layouts/Profile/ViewProfile';
 import Createpost from './Components/Dashboard/Posts/Createpost';
 import Editprofile from './Components/Layouts/Profile/EditProfile'
@@ -15,7 +15,7 @@ import Userposts from './Components/Dashboard/Posts/Userposts';
 import Vieweditpost from './Components/Dashboard/Posts/Vieweditpost';
 import Explore from './Components/Dashboard/Posts/Explore';
 import ViewOtherProfile from './Components/Layouts/Profile/ViewOtherProfile';
-import Footer from './Components/Layouts/Footer';
+import Footer from './Components/Layouts/Footer/Footer';
 import {Provider} from 'react-redux';
 import store from './store'
 /*Importing the router */

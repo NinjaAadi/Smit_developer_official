@@ -7,7 +7,10 @@ const initialstate = {
     currnetuserposts:{},
     singlepostdata:"",
     editpost:{},
-    editpostdata:""
+    editpostdata:"",
+    counter:false,
+    expcounter:false,
+    usercounter:false
 }
 export default function(state = initialstate, action) {
   const { type, payload } = action;
@@ -15,7 +18,8 @@ export default function(state = initialstate, action) {
     case SET_POST:
       return{
           ...state,
-          posts:payload
+          posts:payload,
+          counter:true
       }
     case SET_SINGLE_POST:{
         localStorage.setItem("postid", payload);
@@ -27,7 +31,8 @@ export default function(state = initialstate, action) {
     case SET_ALL_POST:{
       return{
         ...state,
-        allposts:payload
+        allposts:payload,
+        expcounter:true
       }
     }
     case SET_SINGLE_POST_DATA:{
@@ -45,7 +50,8 @@ export default function(state = initialstate, action) {
     case GET_USER_POSTS:{
       return{
         ...state,
-        currnetuserposts:payload
+        currnetuserposts:payload,
+        usercounter:true
       }
     }
     case SET_EDIT_POST:{

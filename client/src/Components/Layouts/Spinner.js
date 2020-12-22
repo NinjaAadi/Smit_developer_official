@@ -9,6 +9,7 @@ export default () => {
         style={{
           width: "200px",
           margin: "auto",
+          marginTop:"200px",
           display: "block",
           backgroundColor : "whitesmoke"
         }}

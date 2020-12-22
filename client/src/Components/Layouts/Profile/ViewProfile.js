@@ -5,59 +5,66 @@ import { connect } from "react-redux";
 import {Link} from 'react-router-dom';
 
 import PropTypes from'prop-types';
-import p from '../../../assets/profilephoto.svg'
+import defaultphoto from '../../../assets/profilephoto.svg'
 const ViewProfile = (props) =>  {
     let profile = props.profile
     if(typeof(profile)==='string'){
         profile = JSON.parse(props.profile);
     }
     let image;
+    //If there is no profile pircture then set the image as a default profile picture
     if(profile==null||profile.profileimagetext==null||profile.profileimagetext.length==0){
-        image = p
+        image = defaultphoto
     }
     else {
         image = 'http://localhost:5000/images/'+profile.profileimagetext;
     } 
+
+    //Skill arrray
     let skill = [];
+
+    //Make the skill string into an array so that it can be mapped
     if(profile!=null){
       if(profile.skills!=null&&profile.skills.length > 0){
        skill = profile.skills.split(",");
       }
     }
+
+    const capitalize = (s) => {
+      if (typeof s !== "string") return "";
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
     if(profile!=null){
     return (
       <Fragment>
-          <Navbar/>
-        <div className={"container " + classes["profile"]}>
-          <div
-            className={classes["profilepic"]}
-            style={{ backgroundImage: `url(${image})` }}
-          ></div>
-          <div className={classes["name"]}>
-            <p>{profile.name}</p>{" "}
-            <Link to="/editprofile">
-              <button>
-                {" "}
-                <i className="fas fa-pen"></i> Edit profile
-              </button>
-            </Link>
+        <Navbar />
+        <div className={classes["profile"]}>
+          <div className={classes["top"]}>
+            <div className={classes["name"]}>
+              <h1>{profile.name}</h1>
+            </div>
+            <div className={classes["photo"]}>
+              <div
+                className={classes["profile-photo"]}
+                style={{ backgroundImage: `url(${image})` }}
+              ></div>
+            </div>
           </div>
-          <div className={classes["bio"]}>
-            <p className={classes["p1"]}>Bio:</p>
-
-            <p className={classes["p2"]}>{profile.bio}</p>
-          </div>
-          <div className={classes["role"]}>
-            <p className={classes["p1"]}>Role</p>
-            <p className={classes["p2"]}>{profile.role}</p>
-          </div>
-          <div className={classes["skills"]}>
-            <p className={classes["p1"]}>Skills:</p>
-            <ul>
-              {skill.map(skill => {
-                return <li>{skill}</li>;
-              })}
-            </ul>
+          <Link to="/editprofile">
+            <button className={classes["edit"] + " " + classes["res"]}>
+              {" "}
+              <i className="fas fa-pen"> </i> Edit profile
+            </button>
+          </Link>
+          <p className={classes.heading + " " + classes.res}>Bio :</p>
+          <p className={classes[("bio", "res")]}>{profile.bio}</p>
+          <p className={classes.heading + " " + classes.res}>Role :</p>
+          <p className={classes[("bio", "res")]}>{profile.role}</p>
+          <p className={classes.heading + " " + classes.res}>Skills :</p>
+          <div className={classes["skills"] + " " + classes["res"]}>
+            {skill.map((skill) => {
+              return <p className={classes["skill-item"]}>{capitalize(skill)}</p>;
+            })}
           </div>
         </div>
       </Fragment>

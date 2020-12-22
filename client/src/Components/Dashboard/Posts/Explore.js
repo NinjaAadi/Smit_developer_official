@@ -8,12 +8,14 @@ import { setsinglepost, setallpost } from "../../../Actions/post";
 import { setusrprofileid } from "../../../Actions/auth";
 import Navbar from "../../Layouts/Navbar/Navbar";
 import PropTypes from "prop-types";
-import ReactHtmlParser from "react-html-parser";
+import post from "../../../Reducers/post";
+
 
 const Explore = (props) => {
   const history = useHistory();
 
   useEffect(() => {
+    console.log(props.counter);
     const func = async () => {
       await props.setallpost();
     };
@@ -40,79 +42,66 @@ const Explore = (props) => {
     // HTML tag with a null string.
     return str.replace(/(<([^>]+)>)/gi, "");
   } 
-  
+  if(props.counter===false){
+      return <Spinner/>
+  }
   if (props.post.length > 0) {
     return (
       <Fragment>
         <Navbar />
-        <div className="container" style={{ marginTop: "60px" }}>
-          <Link to="/createpost">
-            <button className={classes["btn"]}>
-              <i
-                className="fas fa-plus-circle"
-                style={{ color: "#720F0F" }}
-              ></i>{" "}
-              New post
-            </button>
-          </Link>
-        </div>
-        {props.post.map((post) => {
-          let html = window.atob(post.posttext).toString();
-          let txt = removeTags(html);
-          const photo = "/images/" + post.createrpic;
-          return (
             <Fragment>
-              <div className={"container " + classes["post"]}>
-                <div className={classes["heading"]}>
-                  <p>{post.heading}</p>
-                </div>
-                <div className={classes["details"]}>
-                  <div className={classes["name"]}>
-                    <button
-                      className={classes["btn2"]}
-                      onClick={(e) => ViewOtherProfile(e, post.user)}
-                    >
-                      <i className="fas fa-pen"></i>
-                      {post.name}
-                    </button>
-                  </div>
-                  <div className={classes["created"]}>
-                    <p>{post.createdAt.toString()}</p>
-                  </div>
-                </div>
-                <div
-                  className={classes["photo"]}
-                  style={{ backgroundImage: `url(${photo})` }}
-                ></div>
-                <div className={classes["text"]}>
-                  <div className={classes["txt"]}>
-                    <p>{txt}.......</p>
-                  </div>
-                  <button
-                    className={classes["full"]}
-                    onClick={(e) => read(e, post)}
-                  >
-                    Read full post
-                  </button>
-                </div>
-                <div className={classes["lnc"]}>
-                  <div className={classes["likes"]}>
-                    <p>
-                      {" "}
-                      {
-                        post.likes.length
-                      } <i className="fas fa-thumbs-up"></i>{" "}
-                    </p>
-                  </div>
-                  <div className={classes["comments"]}>
-                    {" "}
-                    {post.comments.length} <i className="fas fa-comments"></i>
-                  </div>
-                </div>
+              <br/>
+              <br/>
+              <br/>
+              <div className={classes["wrapper"]}>
+                {props.post.map((post) => {
+                  const html = window
+                    .atob(post.posttext)
+                    .toString()
+                    .substring(0, 55);
+                  const txt = removeTags(html);
+                  // const photo = "/images/" + post.createrpic;
+                  // console.log(`url(${photo})`);
+                  return (
+                    <Fragment>
+                      <div className={classes["item"]}>
+                        <h2 className={classes["heading"]}>{post.heading}</h2>
+                        <h4
+                          className={classes["author"]}
+                          onClick={(e) => ViewOtherProfile(e, post.user)}
+                        >
+                          <i className={classes["clr1"] + " fas fa-pen "}></i>{" "}
+                          {post.name}
+                        </h4>
+                        <h4 className={classes["author1"]}>
+                          <i className={classes["clr"] + " far fa-clock"}></i>{" "}
+                          {post.createdAt.toString().substring(0, 10)}
+                        </h4>
+                        <h4 className={classes["author1"]}>
+                          <i
+                            className={classes["clr"] + " fas fa-thumbs-up"}
+                          ></i>{" "}
+                          {post.likes.length}
+                        </h4>
+                        <h4 className={classes["author1"]}>
+                          <i
+                            className={classes["clr"] + " fas fa-thumbs-down"}
+                          ></i>{" "}
+                          {post.dislikes.length}
+                        </h4>
+                        <p className={classes["paragraph"]}>{txt}.......</p>
+                        <button
+                          className={classes["read"]}
+                          onClick={(e) => read(e, post)}
+                        >
+                          Explore
+                        </button>
+                      </div>
+                    </Fragment>
+                  );
+                })}
               </div>
             </Fragment>
-          );
-        })}
       </Fragment>
     );
   } else {
@@ -146,6 +135,7 @@ Explore.propTypes = {
 const mapStateToProps = (state) => ({
   token: state.auth.token,
   post: state.post.allposts,
+  counter: state.post.expcounter,
 });
 
 export default connect(mapStateToProps, {

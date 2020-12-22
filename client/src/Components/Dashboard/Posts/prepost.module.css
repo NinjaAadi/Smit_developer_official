@@ -1,131 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.cont {
+  display: flex;
+  padding: 50px;
+  justify-content: center;
+}
+.btn {
+  font-family: "Nunito", sans-serif;
+  background: #ff6600;
+  outline: none;
+  padding: 9px;
+  color: white;
+  border: none;
+  font-weight: 400;
+  border-radius: 3px;
+  transition: all 300ms ease-in;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: scale(1.1);
+}
 
-body{
-    margin:0px;
-    padding: 0x;
-    padding: 10px;
-    font-family: 'Signika Negative', sans-serif!important;
+.wrapper {
+  background-color: white;
+  position: relative !important;
+  display: flex !important;
+  flex-wrap: wrap;
+  flex-direction: row !important;
+  justify-content: space-around !important;
+  margin: auto !important;
+  width: 80% !important;
 }
-.btn{
-    background:white;
-    outline: none;
-    padding:14px;
-    border-radius: 30px;
-    border:1px solid brown;
-    box-shadow: 2px 3px 3px grey;
+.item {
+  font-family: "Nunito", sans-serif;
+  font-weight: bolder;
+  position: relative;
+  height: 360px;
+  width: 440px;
+  background-color: white;
+  margin: 10px;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+  padding: 10px;
+}
+.clr {
+  color: rgb(12, 141, 130);
+}
+.clr1{
+  color: white;
+}
+.author1 {
+  margin: 24px 15px 10px 15px !important;
+  display: inline-block !important;
+  font-family: "Nunito", sans-serif !important;
+  cursor: pointer;
+}
+.author {
+  background-color: #007fff;
+  color: whitesmoke;
+  padding: 7px;
+  border-radius: 3px;
+  margin: 13px 0px 5px 15px;
+  display: inline-block;
+  font-family: "Nunito", sans-serif;
+  font-size: small;
+  cursor: pointer;
+}
 
+.heading {
+  margin: 20px 15px 10px 15px !important;
+  font-size: 25px !important;
+  color: #003366 !important;
+  letter-spacing: 0.8px !important;
 }
-.post{
-    border:2px solid #cccccc;
-    box-shadow: 2px 3px 3px #eeeeee;
-    margin-top:40px;
-    height:300px;
-    border-radius: 10px;
-    position: relative;
-    background:white;
+.paragraph {
+  margin: 20px 15px 10px 15px;
+  letter-spacing: 0.6px;
+  font-weight: lighter;
+  font-family: "Nunito", sans-serif;
 }
-.post i{
-    color:#1E90FF;
+.read {
+  margin: 20px 15px 5px 15px;
+  bottom: 40px;
+  padding: 10px;
+  background-color: #ff6600;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  position: absolute;
+  transition: all 300ms linear;
+  cursor: pointer;
 }
-.heading{
-    position: absolute;
-    top:7%;
-    left:5.5%;
-    color:#4F34C9;
-    font-size: 35px;
+.read:hover {
+  transform: scale(1.1);
 }
-.btn2{
-    color: black;
-    background:white;
-    cursor: pointer;
-    border:none;
-}
-.no{
-    text-align: center;
-    font-size: 30px;
-    color: grey;
-    margin-top:12%;
-}
-.photo{
-    position: absolute;
-    width:130px;
-    height:130px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    right:9%;
-    top:20%;
-    border-radius: 50px;
-}
-.details{
-    position: absolute;
-    top:25%;
-    left:6%;
-}
-.name,.created{
-    display: inline-block;
-    margin-right:20px;
-    color:#A0A0A0;
-    font-weight: lighter;
-}
-.text{
-    position: absolute;
-    bottom:40%;
-    left:6%;
-}
-.txt{
-    display:inline-block;
-    font-family: 'Lato', sans-serif;
-}
-.full{
-    display: inline-block;
-    margin-left:20px;
-    background:#2ED573;
-    border:none;
-    color:white;
-    border-radius: 2px;
-    padding:5px;
-}
-.lnc{
-    position: absolute;
-    bottom:15%;
-    left:6%;
-}
-@media only screen and (max-width:768px){
-    .photo{
-        width: 70px;
-        height:70px;
-        right:5%;
-        top:7%;
-    }
-}@media only screen and (max-width:500px){
-    .post{
-        height:370px;
-    }
-    .photo{
-        display: block;
-        left:6%;
-        top:30%;
-    }
-    .details{
-        top:22%;
-    }
-    .full{
-        display: block;
-        margin-left: 0px;
-    }
-    .text{
-        bottom:30%;
-    }
-    .lnc{
-        bottom:10%;
-    }
-}
-@media only screen and (max-width:390px){
-    .post{
-        height:430px;
-    }
-    .heading{
-        font-size: 30px;
-    }
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
 }

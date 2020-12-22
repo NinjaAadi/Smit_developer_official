@@ -76,7 +76,7 @@ const Navbar =  (props) => {
               <li>Profile</li>
             </Link>
             <Link to="/currentuserposts">
-              <li>Your posts</li>
+              <li>My posts</li>
             </Link>
             <li>
               <Link to="/">
