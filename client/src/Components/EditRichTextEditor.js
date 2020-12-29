@@ -6,7 +6,7 @@ import {
   getDefaultKeyBinding,
   createWithContent,
   convertFromRaw,
-  convertToRaw
+  convertToRaw,
 } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 import "./richeditor.css";
@@ -14,18 +14,16 @@ import { connect } from "react-redux";
 import { seteditpostdata } from "../Actions/post";
 import PropTypes from "prop-types";
 import { stateFromHTML } from "draft-js-import-html";
-import {Redirect} from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 class EditRichTextEditor extends React.Component {
-  
   constructor(props) {
-
     super(props);
     this.state = { editorState: EditorState.createEmpty() };
 
     this.focus = () => this.refs.editor.focus();
-    this.onChange = editorState => {
+    this.onChange = (editorState) => {
       this.setState({ editorState });
       const es = JSON.stringify(
         convertToRaw(this.state.editorState.getCurrentContent())
@@ -33,6 +31,7 @@ class EditRichTextEditor extends React.Component {
       const er = convertFromRaw(JSON.parse(es));
       const html = stateToHTML(er);
       const encoded = window.btoa(html);
+      console.log(encoded);
       this.props.seteditpostdata(encoded);
     };
 
@@ -40,16 +39,17 @@ class EditRichTextEditor extends React.Component {
     this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
     this.toggleBlockType = this._toggleBlockType.bind(this);
     this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
-    if(!this.props.post.posttext){
+    if (!this.props.post.posttext) {
       return this.props.history.push("/currentuserposts");
     }
     this.props.seteditpostdata(this.props.post.posttext);
     const decoded = window.atob(this.props.post.posttext);
     const st = EditorState.createWithContent(stateFromHTML(decoded));
-    this.setState({editorState:st});
+    this.setState({ editorState: st });
   }
 
   _handleKeyCommand(command, editorState) {
@@ -94,12 +94,7 @@ class EditRichTextEditor extends React.Component {
     let className = "RichEditor-editor";
     var contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
-      if (
-        contentState
-          .getBlockMap()
-          .first()
-          .getType() !== "unstyled"
-      ) {
+      if (contentState.getBlockMap().first().getType() !== "unstyled") {
         className += " RichEditor-hidePlaceholder";
       }
     }
@@ -123,7 +118,7 @@ class EditRichTextEditor extends React.Component {
               editorState={editorState}
               handleKeyCommand={this.handleKeyCommand}
               keyBindingFn={this.mapKeyToEditorCommand}
-              onChange={this.onChange}
+              onChange={this.onChange()}
               placeholder="Tell a story..."
               ref="editor"
               spellCheck={true}
@@ -141,8 +136,8 @@ const styleMap = {
     backgroundColor: "rgb(245,245,245)",
     fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
     fontSize: 16,
-    padding: 2
-  }
+    padding: 8,
+  },
 };
 
 function getBlockStyle(block) {
@@ -157,7 +152,7 @@ function getBlockStyle(block) {
 class StyleButton extends React.Component {
   constructor() {
     super();
-    this.onToggle = e => {
+    this.onToggle = (e) => {
       e.preventDefault();
       this.props.onToggle(this.props.style);
     };
@@ -187,10 +182,10 @@ const BLOCK_TYPES = [
   { label: "Blockquote", style: "blockquote" },
   { label: "UL", style: "unordered-list-item" },
   { label: "OL", style: "ordered-list-item" },
-  { label: "Code Block", style: "code-block" }
+  { label: "Code Block", style: "code-block" },
 ];
 
-const BlockStyleControls = props => {
+const BlockStyleControls = (props) => {
   const { editorState } = props;
   const selection = editorState.getSelection();
   const blockType = editorState
@@ -200,7 +195,7 @@ const BlockStyleControls = props => {
 
   return (
     <div className="RichEditor-controls">
-      {BLOCK_TYPES.map(type => (
+      {BLOCK_TYPES.map((type) => (
         <StyleButton
           key={type.label}
           active={type.style === blockType}
@@ -217,15 +212,15 @@ var INLINE_STYLES = [
   { label: "Bold", style: "BOLD" },
   { label: "Italic", style: "ITALIC" },
   { label: "Underline", style: "UNDERLINE" },
-  { label: "Monospace", style: "CODE" }
+  { label: "Monospace", style: "CODE" },
 ];
 
-const InlineStyleControls = props => {
+const InlineStyleControls = (props) => {
   const currentStyle = props.editorState.getCurrentInlineStyle();
 
   return (
     <div className="RichEditor-controls">
-      {INLINE_STYLES.map(type => (
+      {INLINE_STYLES.map((type) => (
         <StyleButton
           key={type.label}
           active={currentStyle.has(type.style)}
@@ -237,15 +232,39 @@ const InlineStyleControls = props => {
     </div>
   );
 };
+
+//Do not delete or touch this part 
+EditRichTextEditor.propTypes = {};
+const mapStateToProps = (state) => ({
+  post: state.post.editpost,
+});
 EditRichTextEditor.propTypes = {
+  seteditpostdata: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
-    post:state.post.editpost
-})
-EditRichTextEditor.propTypes = {
-  seteditpostdata:PropTypes.func.isRequired,
-  post:PropTypes.object.isRequired,
-}
 export default withRouter(
   connect(mapStateToProps, { seteditpostdata })(EditRichTextEditor)
 );
+/*Do not touch this */
+
+// componentDidMount() {
+//   if (!this.props.post.posttext) {
+//     return this.props.history.push("/currentuserposts");
+//   }
+//   this.props.seteditpostdata(this.props.post.posttext);
+//   const decoded = window.atob(this.props.post.posttext);
+//   const st = EditorState.createWithContent(stateFromHTML(decoded));
+//   this.setState({ editorState: st });
+// }
+
+// this.onChange = (editorState) => {
+//   this.setState({ editorState });
+//   const es = JSON.stringify(
+//     convertToRaw(this.state.editorState.getCurrentContent())
+//   );
+//   const er = convertFromRaw(JSON.parse(es));
+//   const html = stateToHTML(er);
+//   const encoded = window.btoa(html);
+//   console.log(encoded);
+//   this.props.seteditpostdata(encoded);
+// };

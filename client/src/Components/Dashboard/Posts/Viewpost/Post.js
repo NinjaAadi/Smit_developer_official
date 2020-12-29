@@ -23,6 +23,7 @@ const Post = (props) => {
 
   //Function to delete comment
   const deletecomment = async (e, postid, cmntid) => {
+    console.log(postid, cmntid);
     try {
       const config = {
         headers: {
@@ -60,9 +61,9 @@ const Post = (props) => {
       await axios.post("/api/v1/posts/comment", data, config);
       props.getsinglepost(props.id);
       window.scrollTo(0, document.body.scrollHeight);
-    } catch (error) {
-      console.log(error.response.data);
-    }
+      settxt("");
+      txt = "";
+    } catch (error) {}
   };
 
   //Function to like
@@ -158,9 +159,9 @@ const Post = (props) => {
           <hr />
           <div className={classes["stats"]}>
             <div className={classes["name"]}>
-              <h3>
+              <h4>
                 <i className="fas fa-pencil-alt"></i> {post.name}
-              </h3>
+              </h4>
             </div>
             <div className={classes["prof"]}>
               <div
@@ -170,36 +171,46 @@ const Post = (props) => {
             </div>
             <div className={classes["stats-child"]}>
               <div className={classes["statno"]}>
-                {post.likes.length} <i className="fas fa-thumbs-up blue"></i>
+                {post.likes.length} <i className={"fas fa-thumbs-up"}></i>
               </div>
               <div className={classes["statno"]}>
-                {post.dislikes.length}
-                <i className="fas fa-thumbs-down blue"></i>
+                {post.dislikes.length} <i className={"fas fa-thumbs-down"}></i>
               </div>
-              <div className="statno">
-                {post.comments.length} <i className="fas fa-comment blue"></i>
+              <div className={classes["statno"]}>
+                {post.comments.length} <i className={"fas fa-thumbs-down"}></i>
               </div>
             </div>
-            <div className="cont">
-              <button className="like" onClick={(e) => like(e, post._id)}>
+            <div className={classes["cont"]}>
+              <button
+                className={classes["like"]}
+                onClick={(e) => like(e, post._id)}
+              >
                 <i className="far fa-thumbs-up"></i> {likestr}
               </button>
-              <button className="dislike" onClick={(e) => dislike(e, post._id)}>
+              <button
+                className={classes["dislike"]}
+                onClick={(e) => dislike(e, post._id)}
+              >
                 <i className="far fa-thumbs-down"></i> {dislikestr}
               </button>
             </div>
           </div>
-          <div className="body">
-            <div className="body-text">{ReactHtmlParser(htmltxt)}</div>
+          <div className={classes["body"]}>
+            <div className={classes["body-text"]}>
+              {ReactHtmlParser(htmltxt)}
+            </div>
             <hr />
             <textarea
-              className="textarea"
+              className={classes["textarea"]}
               placeholder="Describe your thoughts here..."
               onChange={(e) => onchange(e)}
               value={txt}
               type="text"
             ></textarea>
-            <button className="cmnt" onClick={(e) => comment(e, post._id)}>
+            <button
+              className={classes["cmnt"]}
+              onClick={(e) => comment(e, post._id)}
+            >
               Comment <i className="fas fa-comments"></i>
             </button>
             <h4>Comments</h4>
@@ -213,15 +224,18 @@ const Post = (props) => {
               }
               if (id.toString() === comment.user.toString()) {
                 return (
-                  <div className="comment">
-                    <div className="box">
-                      <p className="cmnt-txt">
-                        <h4 className="creator">
+                  <div className={classes["comment"]}>
+                    <div className={classes["box"]}>
+                      <p className={classes["cmnt-txt"]}>
+                        <h4 className={classes["creator"]}>
                           <i className="fas fa-pen"></i> {comment.username}
                         </h4>
                         {comment.text}
                       </p>
-                      <button className="delete">
+                      <button
+                        className={classes["delete"]}
+                        onClick={(e) => deletecomment(e, post._id, comment._id)}
+                      >
                         <i className="fas fa-trash-alt"> </i> Delete
                       </button>
                     </div>
@@ -229,10 +243,10 @@ const Post = (props) => {
                 );
               } else {
                 return (
-                  <div className="comment">
-                    <div className="box">
-                      <p className="cmnt-txt">
-                        <h4 className="creator">
+                  <div className={classes["comment"]}>
+                    <div className={classes["box"]}>
+                      <p className={classes["cmnt-txt"]}>
+                        <h4 className={classes["creator"]}>
                           <i className="fas fa-pen"></i> {comment.username}
                         </h4>
                         {comment.text}

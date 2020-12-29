@@ -1,37 +1,43 @@
-.heading{
-    width: 80%;
-    padding:10px;
-    border-radius: 5px;
-    border:1px solid grey;
+.post-div {
+  width: 100%;
 }
-.instructions p:nth-child(1){
-    color:red;
+.heading {
+  width: 90%;
+  padding: 10px;
+  margin: auto;
+  margin-top: 10vh;
+  border-radius: 5px;
+  border: 1px solid grey;
+  display: block;
 }
-.instructions p:nth-child(2){
-    color:green;
+.instructions p:nth-child(1) {
+  color: red;
 }
-.instructions p:nth-child(3){
-    color:blue;
+.instructions p:nth-child(2) {
+  color: green;
 }
-.instructions p:nth-child(4){
-    color:gold;
+.instructions p:nth-child(3) {
+  color: blue;
 }
-.instructions p:nth-child(5){
-    color:grey;
+.instructions p:nth-child(4) {
+  color: gold;
 }
-.post{
-    border-radius: 5px;
-    border:1px solid grey;
-    width:80%;
-    display: block;
-    height:200px;
-    padding:10px;
+.instructions p:nth-child(5) {
+  color: grey;
 }
-.submit{
-    background:#0080ff;
-    color:white;
-    padding:8px;
-    border: none;
-    border-radius: 3px;
-    margin-top:10px;
+.post {
+  border-radius: 5px;
+  border: 1px solid grey;
+  width: 80%;
+  display: block;
+  height: 200px;
+  padding: 10px;
+}
+.submit {
+  background: #0080ff;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 10px;
 }
