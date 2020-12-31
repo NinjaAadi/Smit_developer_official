@@ -1,10 +1,17 @@
-import React,{Fragment} from 'react';
-import { Editor, EditorState, RichUtils, getDefaultKeyBinding,convertFromRaw,convertToRaw} from "draft-js";
+import React, { Fragment } from "react";
+import {
+  Editor,
+  EditorState,
+  RichUtils,
+  getDefaultKeyBinding,
+  convertFromRaw,
+  convertToRaw,
+} from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
-import './richeditor.css';
-import {connect} from 'react-redux';
-import {setpostdata} from '../Actions/post'
-import PropTypes from 'prop-types';
+import "./richeditor.css";
+import { connect } from "react-redux";
+import { setpostdata } from "../Actions/post";
+import PropTypes from "prop-types";
 
 class RichEditor extends React.Component {
   constructor(props) {
@@ -12,7 +19,7 @@ class RichEditor extends React.Component {
     this.state = { editorState: EditorState.createEmpty() };
 
     this.focus = () => this.refs.editor.focus();
-    this.onChange = editorState => {
+    this.onChange = (editorState) => {
       this.setState({ editorState });
       const es = JSON.stringify(
         convertToRaw(this.state.editorState.getCurrentContent())
@@ -23,13 +30,14 @@ class RichEditor extends React.Component {
       this.props.setpostdata(encoded);
     };
 
-    this.handleKeyCommand = this._handleKeyCommand.bind(this);
-    this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
-    this.toggleBlockType = this._toggleBlockType.bind(this);
-    this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
+    this.handleKeyCommand = (command) => this._handleKeyCommand(command);
+    this.onTab = (e) => this._onTab(e);
+    this.toggleBlockType = (type) => this._toggleBlockType(type);
+    this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
   }
 
-  _handleKeyCommand(command, editorState) {
+  _handleKeyCommand(command) {
+    const { editorState } = this.state;
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
       this.onChange(newState);
@@ -38,19 +46,9 @@ class RichEditor extends React.Component {
     return false;
   }
 
-  _mapKeyToEditorCommand(e) {
-    if (e.keyCode === 9 /* TAB */) {
-      const newEditorState = RichUtils.onTab(
-        e,
-        this.state.editorState,
-        4 /* maxDepth */
-      );
-      if (newEditorState !== this.state.editorState) {
-        this.onChange(newEditorState);
-      }
-      return;
-    }
-    return getDefaultKeyBinding(e);
+  _onTab(e) {
+    const maxDepth = 4;
+    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
   }
 
   _toggleBlockType(blockType) {
@@ -71,18 +69,13 @@ class RichEditor extends React.Component {
     let className = "RichEditor-editor";
     var contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
-      if (
-        contentState
-          .getBlockMap()
-          .first()
-          .getType() !== "unstyled"
-      ) {
+      if (contentState.getBlockMap().first().getType() !== "unstyled") {
         className += " RichEditor-hidePlaceholder";
       }
     }
 
     return (
-      <Fragment>
+      <div className="RichEditor-root">
         <BlockStyleControls
           editorState={editorState}
           onToggle={this.toggleBlockType}
@@ -91,23 +84,20 @@ class RichEditor extends React.Component {
           editorState={editorState}
           onToggle={this.toggleInlineStyle}
         />
-        <div className="RichEditor-root">
-          <p className="responsive">Scroll left for more controls</p>
-          <div className={className} onClick={this.focus}>
-            <Editor
-              blockStyleFn={getBlockStyle}
-              customStyleMap={styleMap}
-              editorState={editorState}
-              handleKeyCommand={this.handleKeyCommand}
-              keyBindingFn={this.mapKeyToEditorCommand}
-              onChange={this.onChange}
-              placeholder="Tell a story..."
-              ref="editor"
-              spellCheck={true}
-            />
-          </div>
+        <div className={className} onClick={this.focus}>
+          <Editor
+            blockStyleFn={getBlockStyle}
+            customStyleMap={styleMap}
+            editorState={editorState}
+            handleKeyCommand={this.handleKeyCommand}
+            onChange={this.onChange}
+            onTab={this.onTab}
+            placeholder="Tell a story..."
+            ref="editor"
+            spellCheck={true}
+          />
         </div>
-      </Fragment>
+      </div>
     );
   }
 }
@@ -115,11 +105,11 @@ class RichEditor extends React.Component {
 // Custom overrides for "code" style.
 const styleMap = {
   CODE: {
-    backgroundColor: "rgb(245,245,245)",
+    backgroundColor: "rgba(0, 0, 0, 0.05)",
     fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
     fontSize: 16,
-    padding: 2
-  }
+    padding: 2,
+  },
 };
 
 function getBlockStyle(block) {
@@ -134,7 +124,7 @@ function getBlockStyle(block) {
 class StyleButton extends React.Component {
   constructor() {
     super();
-    this.onToggle = e => {
+    this.onToggle = (e) => {
       e.preventDefault();
       this.props.onToggle(this.props.style);
     };
@@ -164,10 +154,10 @@ const BLOCK_TYPES = [
   { label: "Blockquote", style: "blockquote" },
   { label: "UL", style: "unordered-list-item" },
   { label: "OL", style: "ordered-list-item" },
-  { label: "Code Block", style: "code-block" }
+  { label: "Code Block", style: "code-block" },
 ];
 
-const BlockStyleControls = props => {
+const BlockStyleControls = (props) => {
   const { editorState } = props;
   const selection = editorState.getSelection();
   const blockType = editorState
@@ -177,7 +167,7 @@ const BlockStyleControls = props => {
 
   return (
     <div className="RichEditor-controls">
-      {BLOCK_TYPES.map(type => (
+      {BLOCK_TYPES.map((type) => (
         <StyleButton
           key={type.label}
           active={type.style === blockType}
@@ -194,15 +184,14 @@ var INLINE_STYLES = [
   { label: "Bold", style: "BOLD" },
   { label: "Italic", style: "ITALIC" },
   { label: "Underline", style: "UNDERLINE" },
-  { label: "Monospace", style: "CODE" }
+  { label: "Monospace", style: "CODE" },
 ];
 
-const InlineStyleControls = props => {
-  const currentStyle = props.editorState.getCurrentInlineStyle();
-
+const InlineStyleControls = (props) => {
+  var currentStyle = props.editorState.getCurrentInlineStyle();
   return (
     <div className="RichEditor-controls">
-      {INLINE_STYLES.map(type => (
+      {INLINE_STYLES.map((type) => (
         <StyleButton
           key={type.label}
           active={currentStyle.has(type.style)}
@@ -215,6 +204,6 @@ const InlineStyleControls = props => {
   );
 };
 RichEditor.propTypes = {
-    setpostdata:PropTypes.func.isRequired,
-}
-export default connect(null,{setpostdata})(RichEditor);
+  setpostdata: PropTypes.func.isRequired,
+};
+export default connect(null, { setpostdata })(RichEditor);

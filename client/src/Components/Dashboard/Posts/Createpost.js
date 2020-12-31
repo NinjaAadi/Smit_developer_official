@@ -62,7 +62,7 @@ const Createpost = (props) => {
         <Error msg={err} />
       ))}
       <form>
-        <div className={classes["post-div"]}>
+        <div>
           <input
             className={classes["heading"]}
             type="text"
@@ -73,9 +73,11 @@ const Createpost = (props) => {
             onChange={(e) => onchange(e)}
           />
           <RichEditor />
-          <button className={classes["submit"]} onClick={(e) => submit(e)}>
-            <i className="fas fa-pen"></i> Create
-          </button>
+          <div className={classes["submit-div"]}>
+            <button className={classes["submit"]} onClick={(e) => submit(e)}>
+              <i className="fas fa-pen"></i> Create
+            </button>
+          </div>
         </div>
       </form>
     </Fragment>

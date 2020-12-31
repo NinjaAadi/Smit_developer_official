@@ -7,13 +7,13 @@ import axios from "axios";
 import Spinner from "../Layouts/Spinner";
 import Error from "./Error";
 import { useHistory, Redirect } from "react-router-dom";
-const Login = props => {
+const Login = (props) => {
   const history = useHistory();
   const [err, seterr] = useState([]);
   const [loading, setloading] = useState(false);
   const [userdetails, setdetails] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   const profile = localStorage.getItem("profile");
   if (
@@ -22,11 +22,11 @@ const Login = props => {
   ) {
     return <Redirect to="/dashboard" />;
   }
-  const onchange = e => {
+  const onchange = (e) => {
     setdetails({ ...userdetails, [e.target.name]: e.target.value });
   };
   const { email, password } = userdetails;
-  const onsubmit = async e => {
+  const onsubmit = async (e) => {
     e.preventDefault();
     setloading(true);
     const errors = [];
@@ -43,8 +43,8 @@ const Login = props => {
       try {
         const config = {
           headers: {
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         };
         const formdata = new FormData();
         formdata.append("email", email);
@@ -54,7 +54,7 @@ const Login = props => {
 
           formdata,
           config
-        );  
+        );
         await props.setloginprofile(res.data.token);
         await props.setlogintoken(res.data.token);
 
@@ -69,7 +69,7 @@ const Login = props => {
   if (loading === false) {
     return (
       <Fragment>
-        <div className={"container d-flex" + " " + classes["all"]}>
+        <div className={classes["all"]}>
           <form className={classes["form"]}>
             <h3>LOGIN</h3>
             <input
@@ -78,7 +78,7 @@ const Login = props => {
               placeholder="Enter email"
               name="email"
               value={email}
-              onChange={e => onchange(e)}
+              onChange={(e) => onchange(e)}
             />
             <input
               className={classes["input"]}
@@ -86,14 +86,14 @@ const Login = props => {
               placeholder="Enter password"
               name="password"
               value={password}
-              onChange={e => onchange(e)}
+              onChange={(e) => onchange(e)}
             />
-            <button onClick={e => onsubmit(e)} className={classes["subbtn"]}>
+            <button onClick={(e) => onsubmit(e)} className={classes["subbtn"]}>
               Login
             </button>
           </form>
         </div>
-        {err.map(err => (
+        {err.map((err) => (
           <Error msg={err} />
         ))}
         <br />
@@ -104,13 +104,13 @@ const Login = props => {
     return <Spinner />;
   }
 };
-const mapStateToProps = state => ({
-  details: state.auth
+const mapStateToProps = (state) => ({
+  details: state.auth,
 });
 Login.propTypes = {
   setlogintoken: PropTypes.func.isRequired,
   setloginprofile: PropTypes.func.isRequired,
-  details: PropTypes.object.isRequired
+  details: PropTypes.object.isRequired,
 };
 export default connect(mapStateToProps, { setlogintoken, setloginprofile })(
   Login

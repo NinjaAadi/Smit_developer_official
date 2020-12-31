@@ -1,159 +1,136 @@
-import React,{Fragment} from 'react';
-import {Link,Redirect,withRouter} from 'react-router-dom';
-import classes from './home.module.css';
-
+import React, { Fragment } from "react";
+import { Link, Redirect, withRouter } from "react-router-dom";
+import classes from "./home.module.css";
+import img1 from "../../../assets/landing.svg";
+import side1 from "../../../assets/side1.svg";
+import side2 from "../../../assets/side2.svg";
+import mid from "../../../assets/mid.svg";
+import comm from "../../../assets/comm.svg";
 
 const Home = (props) => {
+  return (
+    <Fragment>
+      <div className={classes["main-land-1"]}>
+        <div className={classes["head"]}>
+          <div className={classes["text"]}>
+            <h1>
+              Interested in Programming <i class="fas fa-laptop"></i>
+            </h1>
+            <h2>You are at the right place!</h2>
+          </div>
+        </div>
+        <div className={classes["image-1"]}>
+          <div
+            className={classes["img"]}
+            style={{ backgroundImage: `url(${img1})` }}
+          ></div>
+        </div>
+      </div>
+      <div className={classes["main-land-2"]}>
+        <div
+          className={classes["img1"]}
+          style={{ backgroundImage: `url(${side1})` }}
+        ></div>
+        <div className={classes["signin"]}>
+          <Link to="/login">
+            <button className={classes["btn-1"]}>Login</button>
+          </Link>
+          <Link to="/signup">
+            <button className={classes["btn-2"]}>Signup</button>
+          </Link>
+        </div>
+        <div
+          className={classes["img2"]}
+          style={{ backgroundImage: `url(${side2})` }}
+        ></div>
+      </div>
 
-    return (
-      <Fragment>
-        <div className={classes["main-landing-1"]}>
-          <div className="container-fluid">
-            <div className="row">
-              <div className={"col-lg-6 d-flex" + " " + classes["all"]}>
-                <div className={classes["landing-text-1"]}>
-                  <p className={classes["para-1"]}>Interested</p>
-                  <p className={classes["para-2"]}>in the</p>
-                  <p className={classes["para-3"]}>Coding Community</p>
-                  <p className={classes["para-4"]}>
-                    You are at the right place
-                  </p>
-                </div>
-              </div>
-              <div className={"col-lg-6 d-flex" + " " + classes["all"]}>
-                <div className={classes["image-1"]}></div>
-              </div>
+      <div className={classes["row"]}>
+        <div className={classes["card1"]}>
+          <div className={classes["c-head"]}>
+            <h2>BEST COMMUNITY</h2>
+          </div>
+          <div className={classes["c-body"]}>
+            <p>
+              G’day, we’re Atlassian. We make tools like Jira and Trello that
+              are used by thousands of teams worldwide. And we’re serious about
+              creating amazing products, practices, and open work for all teams.
+            </p>
+          </div>
+        </div>
+        <div className={classes["card2"]}>
+          <div className={classes["c-head"]}>
+            {" "}
+            <h2>BEST COMMUNITY</h2>
+          </div>
+          <div className={classes["c-body"]}>
+            <p>
+              G’day, we’re Atlassian. We make tools like Jira and Trello that
+              are used by thousands of teams worldwide. And we’re serious about
+              creating amazing products, practices, and open work for all teams.
+            </p>
+          </div>
+        </div>
+        <div className={classes["card3"]}>
+          <div className={classes["c-head"]}>
+            {" "}
+            <h2>BEST COMMUNITY</h2>
+          </div>
+          <div className={classes["c-body"]}>
+            <p>
+              G’day, we’re Atlassian. We make tools like Jira and Trello that
+              are used by thousands of teams worldwide. And we’re serious about
+              creating amazing products, practices, and open work for all teams.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className={classes["main-land-3"]}>
+        <div
+          className={classes["mid-img"]}
+          style={{ backgroundImage: `url(${mid})` }}
+        ></div>
+      </div>
+
+      <div className={classes["main-land-4"]}>
+        <div className={classes["child1"]}>
+          <div
+            className={classes["img-4"]}
+            style={{ backgroundImage: `url(${comm})` }}
+          ></div>
+        </div>
+        <div className={classes["child2"]}>
+          <div className={classes["cards"]}>
+            <div className={classes["card-item"]}>
+              <p>HTML</p>
+            </div>
+            <div className={classes["card-item"]}>
+              <p>CSS</p>
+            </div>
+            <div className={classes["card-item"]}>
+              <p>Competitive Programming</p>
+            </div>
+            <div className={classes["card-item"]}>
+              <p>Machine Learning</p>
+            </div>
+            <div className={classes["card-item"]}>
+              <p>React-</p>
+            </div>
+            <div className={classes["card-item"]}>
+              <p>JS</p>
+            </div>
+            <div className={classes["card-item"]}>
+              <p>Python</p>
+            </div>
+            <div className={classes["card-item"]}>
+              <p>Jquery</p>
             </div>
           </div>
         </div>
-
-        <div className={classes["main-landing-2"]}>
-          <div className="container-fluid">
-            <div className="row">
-              <div className={classes["col-div-2"] + " " + "col-lg-4 d-flex"}>
-                <div className={classes["img-2"]}></div>
-              </div>
-              <div className={classes["col-div-2"] + " " + "col-lg-4"}>
-                <div className={classes["btn-div"]}>
-                  <Link to="/login">
-                    <button className={classes["btn-1"]}>Login</button>
-                  </Link>
-                  <Link to="/signup">
-                    <button className={classes["btn-2"]}>Signup</button>
-                  </Link>
-                </div>
-              </div>
-              <div
-                className={
-                  classes["col-div-2"] +
-                  " " +
-                  "col-lg-4 d-flex" +
-                  " " +
-                  classes["all"]
-                }
-              >
-                <div className={classes["img-3"]}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={classes["main-landing-3"]}>
-          <div className="container-fluid">
-            <div className="row">
-              <div className={"col-lg-4 d-flex" + " " + classes["all"]}>
-                <div className={classes["card-1"]}>
-                  <h2>Best community</h2>
-                  <br />
-                  <p>
-                    G’day, we’re Atlassian. We make tools like Jira and Trello
-                    that are used by thousands of teams worldwide. And we’re
-                    serious about creating amazing products, practices, and open
-                    work for all teams.
-                  </p>
-                </div>
-              </div>
-              <div className={"col-lg-4 d-flex" + " " + classes["all"]}>
-                <div className={classes["card-2"]}>
-                  <h2>Ask your queries</h2>
-                  <br />
-                  <p>
-                    G’day, we’re Atlassian. We make tools like Jira and Trello
-                    that are used by thousands of teams worldwide. And we’re
-                    serious about creating amazing products, practices, and open
-                    work for all teams.
-                  </p>
-                </div>
-              </div>
-              <div className={"col-lg-4 d-flex" + " " + classes["all"]}>
-                <div className={classes["card-3"]}>
-                  <h2>Help other people</h2>
-                  <br />
-                  <p>
-                    G’day, we’re Atlassian. We make tools like Jira and Trello
-                    that are used by thousands of teams worldwide. And we’re
-                    serious about creating amazing products, practices, and open
-                    work for all teams.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={classes["mid"]}></div>
-
-        <div className={classes["main-landing-4"]}>
-          <div className="container-fluid">
-            <div className="row">
-              <div className={"col-lg-6 d-flex" + " " + classes["all"]}>
-                <div className={classes["img-4"]}></div>
-              </div>
-              <div className={"col-lg-6 d-flex" + " " + classes["all"]}>
-                <div>
-                  <div className={classes["textbox"]}>
-                    <h2 className={classes["head"]}>Know the</h2>
-                    <h1 className={classes["head-2"]}>Community</h1>
-                  </div>
-
-                  <div className={classes["grid"]}>
-                    <div className={classes["grid-item"]}>
-                      <p>Heavy Light Decomposition</p>
-                    </div>
-                    <div className={classes["grid-item"]}>
-                      <p>Web dev</p>
-                    </div>
-                    <div className={classes["grid-item"]}>
-                      <p>Android</p>
-                    </div>
-                    <div className={classes["grid-item"]}>
-                      <p>Machine Learning</p>
-                    </div>
-                    <div className={classes["grid-item"]}>
-                      <p>Competitive Programming</p>
-                    </div>
-                    <div className={classes["grid-item"]}>
-                      <p>Security</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={classes["smit-div"] + " " + "container"}>
-          <h3> Sikkim Manipal Institute of technology</h3>
-          <p>
-            Sikkim Manipal Institute of Technology, [SMIT] East Sikkim is a part
-            of the prestigious Sikkim Manipal University which came into
-            existence in 1995. The Institute was founded in 1997. The Institute
-            is approved by AICTE and UGC. It is accreditated by the NBA and
-            holds accreditation by ISO 9001:2008. The Institute is one of the
-            top ranking institutes in the country.
-          </p>
-        </div>
-
-      </Fragment>
-    );
-}
+      </div>
+    </Fragment>
+  );
+};
 
 export default withRouter(Home);

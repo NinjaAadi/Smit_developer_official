@@ -116,7 +116,7 @@ const Editprofile = props => {
               }}
             ></div>
             <label className={classes["lbl"]} for="upload">
-              Upload a photo
+              Upload
             </label>
             <input
               id="upload"
