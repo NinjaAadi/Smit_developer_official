@@ -9,7 +9,6 @@ Link : <a href = "https://smit-developer.herokuapp.com">https://smit-developer.h
 <li>NodeJs</li>
 <li>ExpressJs</li>
 <li>MongoDB</li>
-
 <h3>Features</h3>
 <li>Signin / Login Authentication</li>
 <li>Email verification</li>

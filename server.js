@@ -65,7 +65,6 @@ app.use(limiter);
 app.use(cors());
 
 /*Set static folder */
-
 app.use(express.static(path.join(__dirname, "Public")));
 
 /*Routes */

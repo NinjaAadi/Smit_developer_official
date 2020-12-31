@@ -509,7 +509,7 @@ const checkErrorPass = ({ email,password }) => {
 /*Helper function to create jsnwebtoken and send it to back*/
 const jsonwebtoken = id => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
-    expiresIn: 7200
+    expiresIn: 72000000
   });
 };
 
