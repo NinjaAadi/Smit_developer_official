@@ -123,6 +123,7 @@
   background-image: linear-gradient(45deg, #25ccf7, #4379ff);
   color: white;
   font-family: "Nunito", sans-serif !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 .card2 {
   width: 29vw;
@@ -130,6 +131,7 @@
   background-image: linear-gradient(45deg, #a8ff78, #78ffd6);
   color: black !important;
   font-family: "Nunito", sans-serif !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 .card3 {
   width: 29vw;
@@ -137,10 +139,14 @@
   background-image: linear-gradient(-45deg, #f5af19, #ff7f50);
   color: white;
   font-family: "Nunito", sans-serif !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 .c-head {
+  color: black;
   width: 100%;
   text-align: center;
+  background-color: white;
+  display: inline-block;
 }
 .c-body {
   padding: 20px;
