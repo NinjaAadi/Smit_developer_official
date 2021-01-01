@@ -1,22 +1,46 @@
 import React, { Fragment } from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import classes from "./home.module.css";
-import img1 from "../../../assets/landing.svg";
+import img1 from "../../../assets/coder-girl.svg";
 import side1 from "../../../assets/side1.svg";
 import side2 from "../../../assets/side2.svg";
 import mid from "../../../assets/mid.svg";
 import comm from "../../../assets/comm.svg";
+import Logo from "../Logo/Logo";
+import { useSpring, animated } from "react-spring";
 
 const Home = (props) => {
+  const animationProps = useSpring({
+    config: { mass: 1, tension: 120, friction: 14 },
+    delay: 200,
+    from: { marginLeft: -100, opacity: 0 },
+    to: { marginLeft: 0, opacity: 1 },
+  });
   return (
     <Fragment>
       <div className={classes["main-land-1"]}>
         <div className={classes["head"]}>
+          <div className={classes["logo"]}>
+            <animated.div style={animationProps}>
+              <h2>
+                SMIT <Logo />
+              </h2>
+            </animated.div>
+            <animated.div style={animationProps}>
+              <h2>DevBlock</h2>
+            </animated.div>
+          </div>
           <div className={classes["text"]}>
-            <h1>
-              Interested in Programming <i class="fas fa-laptop"></i>
-            </h1>
-            <h2>You are at the right place!</h2>
+            <h3>Your daily crunch of tech & awesomeness!</h3>
+            <h4>Join the amazing community and be a part of it.</h4>
+            <div className={classes["join"]}>
+              <Link className={classes["btn-1"]} to="/login">
+                Login
+              </Link>
+              <Link className={classes["btn-2"]} to="/signup">
+                SignUp
+              </Link>
+            </div>
           </div>
         </div>
         <div className={classes["image-1"]}>
@@ -25,24 +49,6 @@ const Home = (props) => {
             style={{ backgroundImage: `url(${img1})` }}
           ></div>
         </div>
-      </div>
-      <div className={classes["main-land-2"]}>
-        <div
-          className={classes["img1"]}
-          style={{ backgroundImage: `url(${side1})` }}
-        ></div>
-        <div className={classes["signin"]}>
-          <Link to="/login">
-            <button className={classes["btn-1"]}>Login</button>
-          </Link>
-          <Link to="/signup">
-            <button className={classes["btn-2"]}>Signup</button>
-          </Link>
-        </div>
-        <div
-          className={classes["img2"]}
-          style={{ backgroundImage: `url(${side2})` }}
-        ></div>
       </div>
 
       <div className={classes["row"]}>
