@@ -10,7 +10,7 @@
   font-family: "Nunito", sans-serif !important;
 }
 .main-land-1 {
-  width: 100vw;
+  width: 100%;
   height: 70vh;
   background-color: #1e3d59;
   background-repeat: no-repeat;
@@ -44,8 +44,8 @@
   opacity: 1;
 }
 
-.logo h2:nth-of-type(2) {
-  margin-top: -7%;
+.logo div:nth-of-type(2) h2 {
+  margin-top: -5%;
 }
 
 .text {
@@ -56,7 +56,7 @@
   align-self: center;
   color: whitesmoke;
   opacity: 0;
-  animation: fadeIn 0.7s ease-in-out 1s forwards;
+  animation: fadeIn 0.7s ease-out 1.7s forwards;
 }
 
 @keyframes fadeIn {
@@ -82,7 +82,6 @@
 
 .join {
   width: 100%;
-  /* align-self: center; */
   display: flex;
   align-items: top;
   justify-content: left;
@@ -124,6 +123,7 @@
   height: 100%;
   width: 50%;
   position: relative;
+  box-sizing: border-box;
 }
 .img {
   background-position: center;
