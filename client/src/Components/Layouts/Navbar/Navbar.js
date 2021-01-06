@@ -57,7 +57,7 @@ const Navbar = (props) => {
       <img
         className={classes["logo"]}
         alt="Profilephoto"
-        src={require("../../../assets/smitdev.png")}
+        src={require("../../../assets/SMITDevBlock_logo.svg")}
       />
       <div id="navitem" className={classes["items"]}>
         <ul>
