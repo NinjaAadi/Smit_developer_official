@@ -1,30 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
-body{
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,700;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+body {
   margin: 0px;
   padding: 0px;
 }
 .footer {
   width: 100%;
-  margin-bottom: -100px;
-  background-color: #003366;
-  margin-top:100px!important;
+  background-color: #1e3d59;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-around;
-  font-family: "Nunito", sans-serif;
+  font-family: "Audiowide", sans-serif;
 }
 .items {
-  height: 250px;
-  width: 350px;
+  height: 40vh;
+  padding-left: 10vw;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 20px;
   color: whitesmoke;
 }
 .head {
-  font-size: 32px;
+  font-size: 3vw;
 }
 .list {
+  font-size: 1vw;
   list-style-type: square;
+  list-style: none;
 }
 .list li {
   margin-top: 15px;

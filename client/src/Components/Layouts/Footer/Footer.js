@@ -1,11 +1,14 @@
 import React, { Fragment } from "react";
 import classes from "./footer.module.css";
+import Logo from "./../Logo/Logo";
 export default function Footer() {
   return (
     <Fragment>
       <div className={classes["footer"]}>
         <div className={classes["items"]}>
-          <h2 className={classes["head"]}>Smit_Developer</h2>
+          <h2 className={classes["head"]}>
+            SMIT DevBlock <Logo width="4" height="4" />
+          </h2>
           <ul className={classes["list"]}>
             <li>API</li>
             <li>Bugs</li>
@@ -22,9 +25,13 @@ export default function Footer() {
               <i class="fas fa-envelope-square"></i> aadityapal.info@gmail.com
             </li>
             <li>
-              <i class="fas fa-blog"></i> 
-              <a className = {classes["aa"]} href="https://aadityapal.netlify.app">
-                 {" "}https://aadityapal.netlify.app/
+              <i class="fas fa-blog"></i>
+              <a
+                className={classes["aa"]}
+                href="https://aadityapal.netlify.app"
+              >
+                {" "}
+                https://aadityapal.netlify.app/
               </a>
             </li>
           </ul>
