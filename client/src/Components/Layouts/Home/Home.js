@@ -2,14 +2,16 @@ import React, { Fragment } from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import classes from "./home.module.css";
 import img1 from "../../../assets/coder-girl.svg";
-import side1 from "../../../assets/side1.svg";
-import side2 from "../../../assets/side2.svg";
 import mid from "../../../assets/mid.svg";
-import comm from "../../../assets/comm.svg";
+import comm from "../../../assets/people.svg";
 import Logo from "../Logo/Logo";
+import Card from "./Card/Card";
 import { useSpring, animated } from "react-spring";
 
 const Home = (props) => {
+  const heading_1 = "EXPLORE THE COMMUNITY";
+  const description_1 =
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.";
   const animationProps = useSpring({
     config: { mass: 1, tension: 120, friction: 14 },
     delay: 200,
@@ -23,7 +25,7 @@ const Home = (props) => {
           <div className={classes["logo"]}>
             <animated.div style={animationProps}>
               <h2>
-                SMIT <Logo />
+                SMIT <Logo width="8" height="8" />
               </h2>
             </animated.div>
             <animated.div style={animationProps}>
@@ -52,44 +54,9 @@ const Home = (props) => {
       </div>
 
       <div className={classes["row"]}>
-        <div className={classes["card1"]}>
-          <div className={classes["c-head"]}>
-            <h2>BEST COMMUNITY</h2>
-          </div>
-          <div className={classes["c-body"]}>
-            <p>
-              G’day, we’re Atlassian. We make tools like Jira and Trello that
-              are used by thousands of teams worldwide. And we’re serious about
-              creating amazing products, practices, and open work for all teams.
-            </p>
-          </div>
-        </div>
-        <div className={classes["card2"]}>
-          <div className={classes["c-head"]}>
-            {" "}
-            <h2>BEST COMMUNITY</h2>
-          </div>
-          <div className={classes["c-body"]}>
-            <p>
-              G’day, we’re Atlassian. We make tools like Jira and Trello that
-              are used by thousands of teams worldwide. And we’re serious about
-              creating amazing products, practices, and open work for all teams.
-            </p>
-          </div>
-        </div>
-        <div className={classes["card3"]}>
-          <div className={classes["c-head"]}>
-            {" "}
-            <h2>BEST COMMUNITY</h2>
-          </div>
-          <div className={classes["c-body"]}>
-            <p>
-              G’day, we’re Atlassian. We make tools like Jira and Trello that
-              are used by thousands of teams worldwide. And we’re serious about
-              creating amazing products, practices, and open work for all teams.
-            </p>
-          </div>
-        </div>
+        <Card head={heading_1} des={description_1} />
+        <Card head={heading_1} des={description_1} />
+        <Card head={heading_1} des={description_1} />
       </div>
 
       <div className={classes["main-land-3"]}>
@@ -121,7 +88,7 @@ const Home = (props) => {
               <p>Machine Learning</p>
             </div>
             <div className={classes["card-item"]}>
-              <p>React-</p>
+              <p>React</p>
             </div>
             <div className={classes["card-item"]}>
               <p>JS</p>

@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amaranth:wght@700&family=Raleway:wght@400;500&display=swap");
+
+.card {
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+  background: #1e3d59;
+  width: 20vw;
+  height: clamp(250px, 25vw, 500px);
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.top {
+  margin: 0;
+  font-family: "Amaranth", sans-serif;
+  background: #ff7f50;
+  padding: 2vw;
+  /* border-left: 2vw solid #1e3d59;
+  border-right: 2vw solid #1e3d59; */
+  box-sizing: border-box;
+}
+
+.top h1 {
+  margin: 0;
+  color: white;
+  padding: 4% 2%;
+  font-size: clamp(1rem, 2vw, 2rem);
+}
+
+.down {
+  background: #1e3d59;
+  width: 16vw;
+  margin: auto;
+  height: 5%;
+  border-left: 3vw solid transparent;
+  border-right: 3vw solid transparent;
+  border-top: 3vh solid #ff7f50;
+  box-sizing: border-box;
+}
+
+.content {
+  height: 65%;
+  background: #1e3d59;
+  color: white;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.content p {
+  font-size: clamp(0.2rem, 0.9vw, 1.5rem);
+  overflow: hidden;
+  padding: 10%;
+}
+
+.up {
+  position: absolute;
+  bottom: 0;
+  width: 20vw;
+  height: 5%;
+  border-left: 3vw solid transparent;
+  border-right: 3vw solid transparent;
+  border-bottom: 2vh solid #ff7f50;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 650px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    height: 170vh;
+  }
+
+  .card {
+    margin-bottom: 5vh;
+    width: 50vw;
+    height: 30vh;
+  }
+
+  .top h1 {
+    font-size: 3vh;
+  }
+
+  .content {
+    height: 15vh;
+  }
+
+  .content p {
+    font-size: 1.2vh;
+  }
+
+  .down {
+    width: 40vw;
+  }
+
+  .up {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .top h1 {
+    font-size: 2.5vh;
+  }
+
+  .content p {
+    font-size: 1vh;
+  }
+}
