@@ -7,11 +7,11 @@ export default function Card(props) {
       <div className={classes["top"]}>
         <h1>{props.head}</h1>
       </div>
-      <div className={classes["down"]}></div>
+      {/* <div className={classes["down"]}></div> */}
       <div className={classes["content"]}>
         <p>{props.des}</p>
       </div>
-      <div className={classes["up"]}></div>
+      {/* <div className={classes["up"]}></div> */}
     </div>
   );
 }

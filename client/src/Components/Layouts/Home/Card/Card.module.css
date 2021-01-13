@@ -1,22 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amaranth:wght@700&family=Raleway:wght@400;500&display=swap");
-/* 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
-/* body {
-  width: 100vw;
-  height: 100vh;
-  background: #f5f0e1;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-} 
-*/
 
 .card {
   box-sizing: border-box;
@@ -28,14 +11,16 @@
   text-align: center;
   overflow: hidden;
   box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .top {
   margin: 0;
   font-family: "Amaranth", sans-serif;
   background: #ff7f50;
-  border-left: 2vw solid #1e3d59;
-  border-right: 2vw solid #1e3d59;
+  padding: 2vw;
+  /* border-left: 2vw solid #1e3d59;
+  border-right: 2vw solid #1e3d59; */
   box-sizing: border-box;
 }
 

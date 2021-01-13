@@ -165,7 +165,6 @@
   width: 100%;
   position: relative;
   height: clamp(300px, 30vw, 500px);
-  margin-bottom: 20vw;
 }
 .mid-img {
   position: absolute;
@@ -191,6 +190,10 @@
   position: relative;
 }
 .child2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 50%;
   position: relative;
 }
@@ -206,26 +209,25 @@
 }
 
 .cards {
-  position: absolute;
-  top: 60%;
-  left: 40%;
-  transform: translate(-50%, -50%);
   width: 70%;
-  height: 60%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
 .card-item {
+  margin: 10px;
   height: 100px;
   width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: whitesmoke;
   border-radius: 5px;
   padding: 6px;
 }
+
 .card-item p {
-  width: 100%;
-  height: 100%;
   text-align: center;
 }

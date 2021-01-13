@@ -11,7 +11,7 @@ import { useSpring, animated } from "react-spring";
 const Home = (props) => {
   const heading_1 = "EXPLORE THE COMMUNITY";
   const description_1 =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.";
   const animationProps = useSpring({
     config: { mass: 1, tension: 120, friction: 14 },
     delay: 200,
@@ -88,7 +88,7 @@ const Home = (props) => {
               <p>Machine Learning</p>
             </div>
             <div className={classes["card-item"]}>
-              <p>React-</p>
+              <p>React</p>
             </div>
             <div className={classes["card-item"]}>
               <p>JS</p>
