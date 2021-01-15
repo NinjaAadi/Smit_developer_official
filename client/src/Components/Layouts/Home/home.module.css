@@ -152,6 +152,11 @@
   background-clip: initial;
 }
 
+.row > * {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 2.2s forwards;
+}
+
 .c-head {
   color: black;
   width: 100%;
