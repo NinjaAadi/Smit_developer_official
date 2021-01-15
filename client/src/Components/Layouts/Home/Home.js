@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { Link, Redirect, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import VisibilitySensor from "react-visibility-sensor";
 import classes from "./home.module.css";
 import img1 from "../../../assets/coder-girl.svg";
 import mid from "../../../assets/mid.svg";
@@ -7,17 +8,25 @@ import comm from "../../../assets/people.svg";
 import Logo from "../Logo/Logo";
 import Card from "./Card/Card";
 import { useSpring, animated } from "react-spring";
+import { Spring } from "react-spring/renderprops";
 
 const Home = (props) => {
   const heading_1 = "EXPLORE THE COMMUNITY";
   const description_1 =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.";
+
   const animationProps = useSpring({
     config: { mass: 1, tension: 120, friction: 14 },
     delay: 200,
     from: { marginLeft: -100, opacity: 0 },
     to: { marginLeft: 0, opacity: 1 },
   });
+
+  // const cardProps = usesSpring({
+  //   delay: 200,
+  //   from: {transform: }
+  // })
+
   return (
     <Fragment>
       <div className={classes["main-land-1"]}>
