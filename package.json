@@ -7,7 +7,7 @@
     "dev": "nodemon server.js",
     "nodemon": "nodemon server",
     "start": "node server.js",
-    "client": "npm start --prefix client",
+    "client": "PORT=3005 npm start --prefix client",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "both": "concurrently \"npm run nodemon\" \" npm run client\""
   },
@@ -34,6 +34,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.0",
+    "react-visibility-sensor": "^5.1.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "xss-clean": "^0.1.1"
