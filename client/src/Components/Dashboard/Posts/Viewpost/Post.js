@@ -177,7 +177,7 @@ const Post = (props) => {
                 {post.dislikes.length} <i className={"fas fa-thumbs-down"}></i>
               </div>
               <div className={classes["statno"]}>
-                {post.comments.length} <i className={"fas fa-thumbs-down"}></i>
+                {post.comments.length} <i className={"fas fa-comments"}></i>
               </div>
             </div>
             <div className={classes["cont"]}>

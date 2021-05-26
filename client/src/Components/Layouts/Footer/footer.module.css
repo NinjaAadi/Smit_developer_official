@@ -8,7 +8,6 @@ body{
   width: 100%;
   margin-bottom: -100px;
   background-color: #003366;
-  margin-top:100px!important;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
