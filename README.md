@@ -1,14 +1,66 @@
 # Smit_developer_official
-A blogging website for all the coders out there to share their knowledge.<br/>
+A social and blopgging website for all the coders out there to share their knowledge.<br/>
 Production in progress<br/>
 It is currently hosted in heroku.<br/>
-Link : <a href = "https://smit-developer.herokuapp.com">https://smit-developer.herokuapp.com</s>
+Link : <a href = "https://smitdeveloper.herokuapp.com/">https://smitdeveloper.herokuapp.com/</s>
 
 <b>Tech Stack</b>
+<li>HTML5</li>
+<li>CSS</li>
 <li>ReactJs</li>
 <li>NodeJs</li>
 <li>ExpressJs</li>
 <li>MongoDB</li>
+
+<h2>You cannot signup as the authentication mail provider is not paid</h2>
+<p>Login using email and password provided</p>
+<p>Email : aaditya7739008423@gmail.com</p>
+<p>Password : aadityapal123</p>
+
+<h1>Scripts to run it into your machine</h1>
+<li>Clone the folder into your machine</li>
+<li> Set environment variables and give your own credentials</li>
+<p>The variables are as follows</p>
+
+```
+PORT = 
+MONGODB_URL=
+EMAIL_USERNAME=
+EMAIL_PASSWORD=
+EMAIL_PORT=2525
+EMAIL_HOST=s
+JWT_SECRET=
+FILE_UPLOAD_PATH=./Public/images
+NODE_ENV=production
+
+```
+
+<li> Open terminal and run</li>
+
+```
+npm install
+```
+```
+cd client
+npm install
+cd -
+```
+
+<li>To start the server run</li>
+
+```
+npm start
+```
+<li>To start both the development server and the main server run</li>
+
+```
+npm run both
+```
+
+<h3>You and modify the scipts in package.json file</h3>
+
+
+</li>
 <h3>Features</h3>
 <li>Signin / Login Authentication</li>
 <li>Email verification</li>
@@ -25,9 +77,12 @@ Link : <a href = "https://smit-developer.herokuapp.com">https://smit-developer.h
 
 <h4>Images of the website</h4>
 
-<img width="500" alt="Screenshot 2020-11-21 at 9 04 39 PM" src="https://user-images.githubusercontent.com/56930410/99881635-e8313480-2c40-11eb-9182-03f3ce3a74b0.png">
-<img width="500" alt="Screenshot 2020-11-21 at 9 04 50 PM" src="https://user-images.githubusercontent.com/56930410/99881706-3c3c1900-2c41-11eb-9fea-047af2e8de8d.png">
-<img width="500" alt="Screenshot 2020-11-21 at 9 06 09 PM" src="https://user-images.githubusercontent.com/56930410/99881720-61308c00-2c41-11eb-955b-5ea20f7d4d39.png">
-<img width="500" alt="Screenshot 2020-11-21 at 9 06 15 PM" src="https://user-images.githubusercontent.com/56930410/99881721-68f03080-2c41-11eb-8f5a-1db39e3b45ad.png">
-<img width="500" alt="Screenshot 2020-11-21 at 9 06 25 PM" src="https://user-images.githubusercontent.com/56930410/99881723-6a215d80-2c41-11eb-901d-8d4b5be47e4a.png">
-<img width="500" alt="Screenshot 2020-11-21 at 9 06 32 PM" src="https://user-images.githubusercontent.com/56930410/99881724-6ab9f400-2c41-11eb-97b6-ac4220580246.png">
+<img width="550" alt="Screenshot 2021-05-26 at 8 15 19 AM" src="https://user-images.githubusercontent.com/56930410/119595201-cc2e6b80-bdfa-11eb-826e-a4651e47654e.png">
+<hr/>
+<img width="550" alt="Screenshot 2021-05-26 at 8 15 39 AM" src="https://user-images.githubusercontent.com/56930410/119595214-d3ee1000-bdfa-11eb-9171-12f7bca9ccc4.png">
+<hr/>
+<img width="550" alt="Screenshot 2021-05-26 at 8 15 48 AM" src="https://user-images.githubusercontent.com/56930410/119595219-d81a2d80-bdfa-11eb-8a3b-42e2756076a8.png">
+<hr/>
+<img width="550" alt="Screenshot 2021-05-26 at 8 16 27 AM" src="https://user-images.githubusercontent.com/56930410/119595228-da7c8780-bdfa-11eb-856d-e18f394c8df5.png">
+<hr/>
+<img width="550" alt="Screenshot 2021-05-26 at 8 16 34 AM" src="https://user-images.githubusercontent.com/56930410/119595233-dbadb480-bdfa-11eb-859c-e6a896435430.png">
