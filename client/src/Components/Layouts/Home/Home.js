@@ -64,9 +64,10 @@ const Home = () => {
           </div>
           <div className={classes["c-body"]}>
             <p>
-              You will enter a world where there is community for each and every tech stack.Get help
-              from the best of the best coders all around the country.Have enough knowledge to share it back
-              to the community? Feel free to do so!.So hurry up and login!
+              You will enter a world where there is community for each and every
+              tech stack.Get help from the best of the best coders all around
+              the country.Have enough knowledge to share it back to the
+              community? Feel free to do so!.So hurry up and login!
             </p>
           </div>
         </div>
@@ -78,9 +79,9 @@ const Home = () => {
           <div className={classes["c-body"]}>
             <p>
               Want to know what are the best resoures to learn something new?
-              Join the community of top programmers who share their learning experience
-              all day long.Do not forget to post something which may be a valuable resouce to some
-              other person.
+              Join the community of top programmers who share their learning
+              experience all day long.Do not forget to post something which may
+              be a valuable resouce to some other person.
             </p>
           </div>
         </div>
@@ -91,9 +92,10 @@ const Home = () => {
           </div>
           <div className={classes["c-body"]}>
             <p>
-              Get all updated informations about what is going on and around. Get the latest news
-              and updatea about programming.Whether it is information or doubt.Every thing is present inside
-              this amazing world.So hurry up and login!
+              Get all updated informations about what is going on and around.
+              Get the latest news and updatea about programming.Whether it is
+              information or doubt.Every thing is present inside this amazing
+              world.So hurry up and login!
             </p>
           </div>
         </div>
