@@ -8,10 +8,12 @@ import Spinner from "../../../Layouts/Spinner";
 import Navbar from "../../../Layouts/Navbar/Navbar";
 import ReactHtmlParser from "react-html-parser";
 import post from "../../../../Reducers/post";
+import { set } from "mongoose";
 const Post = (props) => {
   const [isLiked, setlike] = useState("Like");
   const [isDislike, setdislike] = useState("Dislike");
   const [cttxt, settxt] = useState("");
+  const [img, setimg] = useState("");
   useEffect(() => {
     async function getdata() {
       await props.getsinglepost(props.id);
@@ -118,12 +120,14 @@ const Post = (props) => {
 
   if (!isEmpty(props.post)) {
     const post = props.post;
+    console.log(post);
     const htmltxt = window.atob(post.posttext);
-    const image = "/images/" + post.createrpic;
+    let image = "/images/";
+    console.log(image);
+    let id = post.createdby;
     if (typeof props.user === "string") {
       const usr = JSON.parse(props.user);
       console.log(props.user);
-      const id = usr._id;
       props.post.likes.map((like) => {
         if (like.user.toString() === id.toString()) {
           likestr = "Liked";
@@ -136,7 +140,6 @@ const Post = (props) => {
         }
       });
     } else {
-      const id = props.user._id;
       props.post.likes.map((like) => {
         if (like.user.toString() === id.toString()) {
           likestr = "Liked";
@@ -148,7 +151,38 @@ const Post = (props) => {
           dislikestr = "Disliked";
         }
       });
+
+      //Set the profile picture
     }
+    new Promise((resolve, reject) => {
+      getprofilephoto(id, resolve);
+    }).then(() => {
+      console.log(image);
+      setimg(image);
+    });
+
+    async function getprofilephoto(id, resolve) {
+      console.log(id);
+      const config = {
+        headers: {
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      };
+
+      try {
+        const data = await axios.get(
+          "/api/v1/profile/getprofilestring/" + id,
+          config
+        );
+        console.log(data.data.data);
+        image += data.data.data;
+        console.log(image);
+        resolve("success");
+      } catch (error) {
+        console.log(error.response);
+      }
+    }
+
     return (
       <Fragment>
         <Navbar />
@@ -166,7 +200,7 @@ const Post = (props) => {
             <div className={classes["prof"]}>
               <div
                 className={classes["profile"]}
-                style={{ backgroundImage: `url(${image})` }}
+                style={{ backgroundImage: `url(${img})` }}
               ></div>
             </div>
             <div className={classes["stats-child"]}>

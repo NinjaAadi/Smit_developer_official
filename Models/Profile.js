@@ -1,5 +1,5 @@
 /*Bring in mongoose */
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 /*Declare the profile schema */
@@ -7,68 +7,68 @@ const profileSchema = new Schema({
   /*All profiles should have a id which is associated with the user*/
   user: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: "users",
   },
-  name:{
+  name: {
     type: String,
-    required:true
+    required: true,
   },
-  email:{
-    type:String,
+  email: {
+    type: String,
   },
   profileImage: {
-    type: String
+    type: String,
   },
 
   university: {
     type: String,
-    required: true
+    required: true,
   },
 
   role: {
     type: String,
-    required: true
+    required: true,
   },
   skills: {
     type: String,
-    required: true
+    required: true,
   },
   bio: {
-    type: String
+    type: String,
   },
 
   github: {
-    type: String
+    type: String,
   },
   youtube: {
-    type: String
+    type: String,
   },
   instagram: {
-    type: String
+    type: String,
   },
-  linkedin:{
-    type:String
+  linkedin: {
+    type: String,
   },
-  profileimagetext:{
-    type:String,
-    default:null
+  profileimagetext: {
+    type: String,
+    default: null,
   },
-  followers:[
+  followers: [
     {
-    user:{
-      type:Schema.Types.ObjectId,
-      ref:'users'
-    }
-    }
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+    },
   ],
-  following:[
+  following: [
     {
-    user:{
-      type:Schema.Types.ObjectId,
-      ref:'users'
-    }
-    }
-  ]
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+    },
+  ],
 });
 
-module.exports = mongoose.model("profiles",profileSchema);
+module.exports = mongoose.model("profiles", profileSchema);

@@ -1,4 +1,4 @@
-import React, { useState,useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import classes from "./profile.module.css";
 import photo from "../../../assets/profilephoto.svg";
@@ -7,37 +7,35 @@ import PropTypes from "prop-types";
 import { Redirect, useHistory } from "react-router-dom";
 import { setprofile } from "../../../Actions/auth";
 const axios = require("axios");
-const Editprofile = props => {
+const Editprofile = (props) => {
   const [src, setsrc] = useState(photo);
   const [loading, setloading] = useState(false);
   const [err, seterr] = useState([]);
   const history = useHistory();
   let prf = props.profile;
-  if(typeof(prf)==='string'){
-      prf = JSON.parse(props.profile);
+  if (typeof prf === "string") {
+    prf = JSON.parse(props.profile);
   }
   let img;
-  if(prf.profileimagetext===null){
-    img = photo
-  }
-  else {
-      img = 'http://localhost:5000/images/'+prf.profileimagetext
+  if (prf.profileimagetext === null) {
+    img = photo;
+  } else {
+    img = "http://localhost:5000/images/" + prf.profileimagetext;
   }
   useEffect(() => {
     setsrc(img);
-  }, [img])
+  }, [img]);
 
   const [details, setdetails] = useState({
     file: img,
-    name:prf.name,
+    name: prf.name,
     university: prf.university,
     skills: prf.skills,
     role: prf.role,
-    bio:prf.bio
+    bio: prf.bio,
   });
 
-
-  const onchange = e => {
+  const onchange = (e) => {
     setdetails({ ...details, file: e.target.files[0] });
     if (e.target.files.length === 0) {
       return;
@@ -52,19 +50,19 @@ const Editprofile = props => {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
-  const onchange2 = e => {
+  const onchange2 = (e) => {
     setdetails({ ...details, [e.target.name]: e.target.value });
   };
 
-  const onsubmit = async e => {
+  const onsubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
     setloading(true);
     const config = {
       headers: {
         "Content-Type": "application/json",
-        "x-auth-token": token
-      }
+        "x-auth-token": token,
+      },
     };
     try {
       const formData = new FormData();
@@ -80,7 +78,7 @@ const Editprofile = props => {
         formData,
         config
       );
-     await props.setprofile(res.data.data);
+      await props.setprofile(res.data.data);
       history.push("/userprofile");
     } catch (error) {
       setloading(false);
@@ -89,12 +87,12 @@ const Editprofile = props => {
         errors.push(error.response.data.data);
         seterr(errors);
       } else if (typeof error.response.data.data == "object") {
-        error.response.data.data.map(err => errors.push(err));
+        error.response.data.data.map((err) => errors.push(err));
         seterr(errors);
       }
     }
   };
-  const { university, skills, role,bio,name } = details;
+  const { university, skills, role, bio, name } = details;
   if (loading === false) {
     return (
       <Fragment>
@@ -104,7 +102,7 @@ const Editprofile = props => {
             Hello, {prf.name}
           </h2>
         </div>
-        <div className="container" style={{ marginTop: "25px" }}>
+        <div>
           <form
             className={classes["complete-profile"]}
             enctype="multipart/form-data"
@@ -112,7 +110,7 @@ const Editprofile = props => {
             <div
               className={classes["photoview"]}
               style={{
-                backgroundImage: "url(" + src + ")"
+                backgroundImage: "url(" + src + ")",
               }}
             ></div>
             <label className={classes["lbl"]} for="upload">
@@ -122,36 +120,31 @@ const Editprofile = props => {
               id="upload"
               className={classes["p-input"]}
               type="file"
-              onChange={e => onchange(e)}
+              onChange={(e) => onchange(e)}
               accept="image/*"
               multiple={false}
             />
-            <label className={classes["label1"]} for={classes["uni"]}>
-              Enter your name:{" "}
-            </label>
+            <p className={classes["label1"]}>Enter your name: </p>
             <input
               type="text"
               className={classes["uni"]}
               placeholder="Name"
               name="name"
               value={name}
-              onChange={e => onchange2(e)}
+              onChange={(e) => onchange2(e)}
             />
-            <label className={classes["label1"]} for={classes["uni"]}>
-              Enter your university name:{" "}
-            </label>
+            <p className={classes["label1"]}>Enter your university name: </p>
             <input
               type="text"
               className={classes["uni"]}
               placeholder="Ex:IIT Delhi"
               name="university"
               value={university}
-              onChange={e => onchange2(e)}
+              onChange={(e) => onchange2(e)}
             />
-            <br />
-            <label className={"label1"} for={classes["uni"]}>
+            <p className={classes["label1"]}>
               Enter skills (comma seperated values) :{" "}
-            </label>
+            </p>
             <input
               type="text"
               className={classes["uni"]}
@@ -159,11 +152,9 @@ const Editprofile = props => {
               maxLength={55}
               name="skills"
               value={skills}
-              onChange={e => onchange2(e)}
+              onChange={(e) => onchange2(e)}
             />
-            <label className={"label1"} for={classes["uni"]}>
-              Enter bio :{" "}
-            </label>
+            <p className={classes["label1"]}>Enter bio : </p>
             <input
               type="text"
               className={classes["uni"]}
@@ -171,17 +162,15 @@ const Editprofile = props => {
               maxLength={100}
               name="bio"
               value={bio}
-              onChange={e => onchange2(e)}
+              onChange={(e) => onchange2(e)}
             />
 
-            <label className={classes["label1"]} for={classes["role"]}>
-              Enter your role{" "}
-            </label>
+            <p className={classes["label1"]}>Enter your role </p>
             <select
               className={classes["role"]}
               value={role}
               name="role"
-              onChange={e => onchange2(e)}
+              onChange={(e) => onchange2(e)}
             >
               <option value="Front End Developer">Front End Developer</option>
               <option value="Teacher">Teacher</option>
@@ -197,7 +186,7 @@ const Editprofile = props => {
             </select>
             <div className={classes["profilepic"]}></div>
             <div className={"container " + classes["cont"]}>
-              {err.map(err => (
+              {err.map((err) => (
                 <div className={classes["err"]}>
                   <p>* {err}</p>
                 </div>
@@ -206,7 +195,7 @@ const Editprofile = props => {
             <button
               type="submit"
               className={classes["submit-btn"]}
-              onClick={e => onsubmit(e)}
+              onClick={(e) => onsubmit(e)}
             >
               Submit
             </button>
@@ -221,11 +210,11 @@ const Editprofile = props => {
 Editprofile.propTypes = {
   details: PropTypes.object.isRequired,
   setprofile: PropTypes.func.isRequired,
-  profile:PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   details: state.auth,
-  profile:state.auth.profile
+  profile: state.auth.profile,
 });
 
 export default connect(mapStateToProps, { setprofile })(Editprofile);

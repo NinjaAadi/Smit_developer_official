@@ -21,7 +21,7 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
-  createrpic:{
+  createdby:{
     type:String
   },
   likes: [

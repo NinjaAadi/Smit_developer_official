@@ -7,35 +7,17 @@ import { setloginprofile } from "../../../Actions/auth";
 import axios from "axios";
 import PropTypes from "prop-types";
 const ViewOtherProfile = (props) => {
-  const [btn, setbtn] = useState(
-    <button className={classes["fnf"]} onClick={(e) => follow(e)}>
-      {" "}
-      <i className="fas fa-plus"></i> Follow
-    </button>
-  );
+  const [btn, setbtn] = useState("follow");
   useEffect(() => {
-    console.log(usr);
-    if (usr.following.length === 0) {
-      setbtn(
-        <button className={classes["fnf"]} onClick={(e) => follow(e)}>
-          {" "}
-          <i className="fas fa-plus"></i> Follow
-        </button>
-      );
-    }
     usr.following.map((user) => {
       if (user.user.toString() === profile.user.toString()) {
-        return setbtn(
-          <button className={classes["fnf"]} onClick={(e) => Unfollow(e)}>
-            {" "}
-            <i className="fas fa-minus"></i> UnFollow
-          </button>
-        );
+        return setbtn("unfollow");
       }
     });
   }, []);
   let profile = props.profile;
   if (typeof profile === "string") {
+    console.log(profile);
     profile = JSON.parse(props.profile);
   }
   let image;
@@ -60,7 +42,15 @@ const ViewOtherProfile = (props) => {
   } else {
     usr = props.currnetuser;
   }
-  const Unfollow = async (e) => {
+  const decide = (e) => {
+    if (btn === "follow") {
+      follow();
+    } else if (btn === "unfollow") {
+      Unfollow();
+    }
+  };
+  const Unfollow = async () => {
+    console.log("Clicking here");
     try {
       const config = {
         headers: {
@@ -69,15 +59,11 @@ const ViewOtherProfile = (props) => {
       };
       const data = {};
       const url = "/api/v1/profile/unfollowuser/" + profile.user;
+      console.log(url);
       const res = await axios.post(url, data, config);
       console.log(res);
+      setbtn("follow");
       await props.setloginprofile();
-      setbtn(
-        <button onClick={(e) => follow(e)}>
-          {" "}
-          <i className="fas fa-plus"></i> Follow
-        </button>
-      );
     } catch (error) {
       console.log(error);
     }
@@ -94,12 +80,7 @@ const ViewOtherProfile = (props) => {
       const res = await axios.post(url, data, config);
       console.log(res);
       await props.setloginprofile();
-      setbtn(
-        <button onClick={(e) => Unfollow(e)}>
-          {" "}
-          <i className="fas fa-plus"></i> UnFollow
-        </button>
-      );
+      setbtn("unfollow");
     } catch (error) {
       console.log(error);
     }
@@ -124,7 +105,10 @@ const ViewOtherProfile = (props) => {
               ></div>
             </div>
           </div>
-          {btn}
+          <button className={classes["fnf"]} onClick={(e) => decide(e)}>
+            {" "}
+            {btn}
+          </button>
           <p className={classes.heading + " " + classes.res}>Bio :</p>
           <p className={classes[("bio", "res")]}>{profile.bio}</p>
           <p className={classes.heading + " " + classes.res}>Role :</p>

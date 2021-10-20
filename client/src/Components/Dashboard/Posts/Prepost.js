@@ -38,8 +38,8 @@ const Prepost = (props) => {
     // HTML tag with a null string.
     return str.replace(/(<([^>]+)>)/gi, "");
   }
-  if(props.counter===false){
-    return <Spinner/>
+  if (props.counter === false) {
+    return <Spinner />;
   }
   //If props is not empty then render this
   if (props.post.length > 0) {
@@ -103,20 +103,25 @@ const Prepost = (props) => {
   else {
     return (
       <Fragment>
-        <div className="container" style={{ marginTop: "60px" }}>
-          <Link to="/createpost">
-            <button className={classes["btn"]}>
-              <i
-                className="fas fa-plus-circle"
-                style={{ color: "#720F0F" }}
-              ></i>{" "}
-              New post
-            </button>
-          </Link>
-        </div>
-        <div className={"container " + classes["no"]}>
-          <p>No posts yet</p>
-          <p>Follow people to see their posts</p>
+        <div className={classes["empty"]}>
+          <div className={classes["container"]} style={{ marginTop: "60px" }}>
+            <Link to="/createpost">
+              <button className={classes["btn"]}>
+                <i
+                  className="fas fa-plus-circle"
+                  style={{ color: "white" }}
+                ></i>{" "}
+                New post
+              </button>
+            </Link>
+            <div className={classes["para"]}>
+              <p>No posts yet</p>
+              <p>
+                <i class="fas fa-plus-circle"></i>
+              </p>
+              <p>Follow people to see their posts</p>
+            </div>
+          </div>
         </div>
       </Fragment>
     );
@@ -131,7 +136,7 @@ Prepost.propTypes = {
 const mapStateToProps = (state) => ({
   token: state.auth.token,
   post: state.post.posts,
-  counter:state.post.counter
+  counter: state.post.counter,
 });
 
 export default connect(mapStateToProps, {

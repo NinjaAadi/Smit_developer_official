@@ -9,6 +9,7 @@ body {
   background-color: #ffffff;
   position: relative;
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -42,7 +43,6 @@ body {
   display: inline-block !important;
   font-family: "Nunito", sans-serif !important;
   cursor: pointer;
-  
 }
 .author {
   background-color: #007fff;
