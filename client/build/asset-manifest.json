@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b070f17d.chunk.css",
+    "main.js": "/static/js/main.62988f55.chunk.js",
+    "main.js.map": "/static/js/main.62988f55.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/js/2.b45c75e7.chunk.js": "/static/js/2.b45c75e7.chunk.js",
+    "static/js/2.b45c75e7.chunk.js.map": "/static/js/2.b45c75e7.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.334f24f8b5d038a3393a690211bcbffc.js": "/precache-manifest.334f24f8b5d038a3393a690211bcbffc.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.b070f17d.chunk.css.map": "/static/css/main.b070f17d.chunk.css.map",
+    "static/js/2.b45c75e7.chunk.js.LICENSE.txt": "/static/js/2.b45c75e7.chunk.js.LICENSE.txt",
+    "static/media/SMITDevBlock_logo.svg": "/static/media/SMITDevBlock_logo.6475b0fd.svg",
+    "static/media/home.module.css": "/static/media/background.8a734a33.jpg",
+    "static/media/blocks_animations.svg": "/static/media/blocks_animations.b9f74080.svg",
+    "static/media/comm.svg": "/static/media/comm.722816b0.svg",
+    "static/media/mid.svg": "/static/media/mid.5f52d608.svg",
+    "static/media/profile.module.css": "/static/media/profile.f4976c0c.svg",
+    "static/media/profilephoto.svg": "/static/media/profilephoto.d9c3589b.svg",
+    "static/media/side1.svg": "/static/media/side1.b856488e.svg",
+    "static/media/side2.svg": "/static/media/side2.e08187a9.svg",
+    "static/media/spinner.gif": "/static/media/spinner.e43fea52.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09b85ec0.js",
+    "static/js/2.b45c75e7.chunk.js",
+    "static/css/main.b070f17d.chunk.css",
+    "static/js/main.62988f55.chunk.js"
+  ]
+}
