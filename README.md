@@ -77,12 +77,3 @@ npm run both
 
 <h4>Images of the website</h4>
 
-<img width="550" alt="Screenshot 2021-05-26 at 8 15 19 AM" src="https://user-images.githubusercontent.com/56930410/119595201-cc2e6b80-bdfa-11eb-826e-a4651e47654e.png">
-<hr/>
-<img width="550" alt="Screenshot 2021-05-26 at 8 15 39 AM" src="https://user-images.githubusercontent.com/56930410/119595214-d3ee1000-bdfa-11eb-9171-12f7bca9ccc4.png">
-<hr/>
-<img width="550" alt="Screenshot 2021-05-26 at 8 15 48 AM" src="https://user-images.githubusercontent.com/56930410/119595219-d81a2d80-bdfa-11eb-8a3b-42e2756076a8.png">
-<hr/>
-<img width="550" alt="Screenshot 2021-05-26 at 8 16 27 AM" src="https://user-images.githubusercontent.com/56930410/119595228-da7c8780-bdfa-11eb-856d-e18f394c8df5.png">
-<hr/>
-<img width="550" alt="Screenshot 2021-05-26 at 8 16 34 AM" src="https://user-images.githubusercontent.com/56930410/119595233-dbadb480-bdfa-11eb-859c-e6a896435430.png">
